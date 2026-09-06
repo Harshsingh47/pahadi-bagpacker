@@ -33,7 +33,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] pt-36 sm:pt-40 lg:pt-44 pb-16 flex flex-col justify-between overflow-hidden">
+    <section className="relative min-h-[80vh] sm:min-h-[85vh] lg:min-h-[90vh] pt-28 sm:pt-36 lg:pt-44 pb-10 sm:pb-16 flex flex-col justify-between overflow-hidden">
       {/* BACKGROUND IMAGE & SCENIC MOUNTAIN OVERLAYS */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -47,35 +47,35 @@ export default function HeroSection() {
       </div>
 
       {/* HERO CONTENT GRID */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full my-auto py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full my-auto py-2 sm:py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* LEFT COLUMN — ELEGANT TYPOGRAPHY, BADGE & CTAS */}
-          <div className="lg:col-span-7 space-y-5 text-left">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
             
             {/* TOP PILL BADGE */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-white text-xs font-medium shadow-lg">
-              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-bold text-[11px] uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-white text-[11px] sm:text-xs font-medium shadow-lg">
+              <span className="flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full bg-emerald-500 text-white font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
                 <Sparkles className="w-3 h-3" /> New
               </span>
               <span className="text-slate-100 font-medium tracking-wide">Travel Beyond Expectations</span>
             </div>
 
             {/* ELEGANT SERIF & CURSIVE HERO HEADING */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight font-normal drop-shadow-md">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight font-normal drop-shadow-md">
               Travel Beyond the <span className="font-cursive italic text-emerald-300 font-normal">Ordinary</span>
             </h1>
 
             {/* DESCRIPTIVE BODY COPY */}
-            <p className="text-sm sm:text-base text-slate-200 max-w-lg leading-relaxed font-normal drop-shadow-sm">
+            <p className="text-xs sm:text-base text-slate-200 max-w-lg leading-relaxed font-normal drop-shadow-sm">
               Explore extraordinary Himalayan places, compare travel options, and uncover experiences that match your travel style. Travel smarter, discover more, and make every moment count.
             </p>
 
             {/* GLASSMORPHISM CTA BUTTONS */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 sm:pt-2">
               <Link 
                 href="/destinations" 
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/30 backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-xs sm:text-sm border border-white/30 backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-105"
               >
                 <Compass className="w-4 h-4 text-emerald-300" />
                 Explore Destinations 
@@ -84,18 +84,40 @@ export default function HeroSection() {
               
               <Link 
                 href="/itinerary-planner" 
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl shadow-emerald-900/30 transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm shadow-xl shadow-emerald-900/30 transition-all duration-300 hover:scale-105"
               >
                 Plan Your Trip 
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
+            {/* MOBILE ONLY HORIZONTAL DESTINATION PILLS */}
+            <div className="lg:hidden flex items-center gap-2 overflow-x-auto pb-1 pt-2 no-scrollbar w-full">
+              {HERO_ORBS.map((orb, index) => {
+                const isActive = activeIdx === index;
+                return (
+                  <Link 
+                    key={orb.id} 
+                    href={orb.href}
+                    onClick={() => setActiveIdx(index)}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full shrink-0 transition-all border text-xs font-medium backdrop-blur-md ${
+                      isActive 
+                        ? 'bg-emerald-600/90 text-white border-emerald-400 shadow-md scale-105' 
+                        : 'bg-white/15 text-slate-100 border-white/20 hover:bg-white/25'
+                    }`}
+                  >
+                    <img src={orb.img} alt={orb.name} className="w-4 h-4 rounded-full object-cover shrink-0" />
+                    <span className="truncate max-w-[130px]">{orb.name}</span>
+                  </Link>
+                );
+              })}
+            </div>
+
           </div>
 
-          {/* RIGHT COLUMN — FLOATING CIRCULAR DESTINATION ORBS */}
+          {/* RIGHT COLUMN — FLOATING CIRCULAR DESTINATION ORBS (DESKTOP ONLY) */}
           <div 
-            className="lg:col-span-5 relative flex items-center justify-end"
+            className="hidden lg:flex lg:col-span-5 relative items-center justify-end"
           >
             
             {/* FLOATING ORBS LIST */}
