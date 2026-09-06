@@ -12,35 +12,35 @@ export default function DestinationsPage() {
   ];
 
   return (
-    <div className="pt-36 pb-24 bg-slate-950 min-h-screen">
+    <div className="pt-36 pb-24 bg-[#F8FAF9] min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest font-mono text-emerald-400 font-semibold">DISCOVER THE HIMALAYAS</span>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-white mt-2 uppercase font-heading">DESTINATIONS DIRECTORY</h1>
-          <p className="text-slate-400 text-base mt-3">
+          <span className="text-xs uppercase tracking-widest font-mono text-emerald-700 font-semibold">DISCOVER THE HIMALAYAS</span>
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 mt-2 uppercase font-heading">DESTINATIONS DIRECTORY</h1>
+          <p className="text-slate-500 text-base mt-3">
             Explore serene valleys, alpine high passes, and sacred rivers across Himachal Pradesh and Uttarakhand.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((d) => (
-            <div key={d.slug} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition-all flex flex-col justify-between shadow-xl">
+            <div key={d.slug} className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden group hover:border-emerald-500/50 transition-all flex flex-col justify-between shadow-xl">
               <div className="relative h-52">
                 <img src={d.img} alt={d.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <span className={`absolute top-3 right-3 px-2.5 py-1 text-xs font-mono rounded-lg border ${d.state === 'Himachal' ? 'bg-emerald-950 text-emerald-300 border-emerald-800' : 'bg-amber-950 text-amber-300 border-amber-800'}`}>
+                <span className={`absolute top-3 right-3 px-2.5 py-1 text-xs font-mono rounded-lg border ${d.state === 'Himachal' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-amber-50 text-amber-800 border-amber-200'}`}>
                   {d.state}
                 </span>
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{d.name}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">{d.desc}</p>
-                  <div className="space-y-1 text-[11px] text-slate-400 bg-slate-950 p-3 rounded-xl border border-slate-800">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">{d.name}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">{d.desc}</p>
+                  <div className="space-y-1 text-[11px] text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200/80">
                     <p>🗓️ <strong>Best Time:</strong> {d.time}</p>
                     <p>⏱️ <strong>Ideal Stay:</strong> {d.stay}</p>
                   </div>
                 </div>
-                <Link href={`/destinations/${d.slug}`} className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-bold text-emerald-400 hover:text-white">
+                <Link href={`/destinations/${d.slug}`} className="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs font-bold text-emerald-700 hover:text-white">
                   <span>Explore {d.name} Details</span> &rarr;
                 </Link>
               </div>

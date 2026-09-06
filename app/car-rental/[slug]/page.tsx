@@ -6,33 +6,33 @@ export default function CarDetailPage({ params }: { params: { slug: string } }) 
   const name = slug.replace('-', ' ').toUpperCase();
 
   return (
-    <div className="pt-36 pb-24 bg-slate-950 min-h-screen">
+    <div className="pt-36 pb-24 bg-[#F8FAF9] min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full text-xs font-bold">Self-Drive Mountain SUV</span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-white mt-3 uppercase font-heading">{name}</h1>
-            <p className="text-slate-300 text-base max-w-2xl mt-2">
+            <span className="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full text-xs font-bold">Self-Drive Mountain SUV</span>
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 mt-3 uppercase font-heading">{name}</h1>
+            <p className="text-slate-600 text-base max-w-2xl mt-2">
               Mountain-tested 4x4 engine built for Spiti, Leh, and high-altitude highway pass routes.
             </p>
           </div>
 
-          <div className="bg-slate-900 p-6 rounded-2xl border border-slate-800 text-right shrink-0">
-            <span className="text-xs text-slate-400 block uppercase">Daily Rental Price</span>
-            <div className="text-3xl font-extrabold text-emerald-400">₹4,500 <span className="text-xs text-slate-400">/ day</span></div>
-            <span className="text-[11px] text-slate-400">Security Deposit: ₹10,000</span>
+          <div className="bg-white p-6 rounded-2xl border border-slate-200/80 text-right shrink-0">
+            <span className="text-xs text-slate-500 block uppercase">Daily Rental Price</span>
+            <div className="text-3xl font-extrabold text-emerald-700">₹4,500 <span className="text-xs text-slate-500">/ day</span></div>
+            <span className="text-[11px] text-slate-500">Security Deposit: ₹10,000</span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="md:col-span-2 rounded-2xl overflow-hidden border border-slate-800 h-96">
+          <div className="md:col-span-2 rounded-2xl overflow-hidden border border-slate-200/80 h-96">
             <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80" alt={name} className="w-full h-full object-cover" />
           </div>
 
           <div>
-            <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4 text-xs">
-              <h3 className="font-bold text-white text-base">Book {name}</h3>
-              <Link href={`/booking?car=${slug}`} className="w-full block text-center py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold uppercase rounded-xl shadow-lg">
+            <div className="bg-white border border-slate-200/80 p-6 rounded-2xl space-y-4 text-xs">
+              <h3 className="font-bold text-slate-900 text-base">Book {name}</h3>
+              <Link href={`/booking?car=${slug}`} className="w-full block text-center py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase rounded-xl shadow-lg">
                 Book Car Now &rarr;
               </Link>
             </div>

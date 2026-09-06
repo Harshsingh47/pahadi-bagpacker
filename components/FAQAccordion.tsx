@@ -47,27 +47,27 @@ export default function FAQAccordion() {
     <div>
       {/* CATEGORY BUTTONS */}
       <div className="mb-10 flex flex-wrap items-center justify-center gap-2">
-        <button onClick={() => setActiveCategory('all')} className={`px-4 py-2 rounded-xl font-bold text-xs ${activeCategory === 'all' ? 'bg-emerald-600 text-white' : 'bg-slate-800/80 text-slate-300'}`}>All FAQs</button>
-        <button onClick={() => setActiveCategory('treks')} className={`px-4 py-2 rounded-xl text-xs font-semibold ${activeCategory === 'treks' ? 'bg-emerald-600 text-white' : 'bg-slate-800/80 text-slate-300'}`}>Trekking & Safety</button>
-        <button onClick={() => setActiveCategory('rentals')} className={`px-4 py-2 rounded-xl text-xs font-semibold ${activeCategory === 'rentals' ? 'bg-emerald-600 text-white' : 'bg-slate-800/80 text-slate-300'}`}>Car & Bike Rental</button>
-        <button onClick={() => setActiveCategory('taxi')} className={`px-4 py-2 rounded-xl text-xs font-semibold ${activeCategory === 'taxi' ? 'bg-emerald-600 text-white' : 'bg-slate-800/80 text-slate-300'}`}>Taxi & Transfers</button>
-        <button onClick={() => setActiveCategory('payments')} className={`px-4 py-2 rounded-xl text-xs font-semibold ${activeCategory === 'payments' ? 'bg-emerald-600 text-white' : 'bg-slate-800/80 text-slate-300'}`}>Payments & Refund</button>
+        <button onClick={() => setActiveCategory('all')} className={`px-4 py-2 rounded-xl font-bold text-xs transition-all ${activeCategory === 'all' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'}`}>All FAQs</button>
+        <button onClick={() => setActiveCategory('treks')} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeCategory === 'treks' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'}`}>Trekking & Safety</button>
+        <button onClick={() => setActiveCategory('rentals')} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeCategory === 'rentals' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'}`}>Car & Bike Rental</button>
+        <button onClick={() => setActiveCategory('taxi')} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeCategory === 'taxi' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'}`}>Taxi & Transfers</button>
+        <button onClick={() => setActiveCategory('payments')} className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${activeCategory === 'payments' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'}`}>Payments & Refund</button>
       </div>
 
       <div className="max-w-3xl mx-auto space-y-4">
         {filtered.map((item) => {
           const isOpen = openId === item.id;
           return (
-            <div key={item.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden transition-all">
+            <div key={item.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm transition-all hover:border-slate-300">
               <button 
                 onClick={() => setOpenId(isOpen ? null : item.id)}
-                className="w-full p-5 text-left font-bold text-white text-base flex items-center justify-between"
+                className="w-full p-5 text-left font-bold text-slate-900 text-base flex items-center justify-between hover:text-emerald-700 transition-colors"
               >
                 <span>{item.question}</span>
-                <ChevronDown className={`w-5 h-5 text-emerald-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 text-emerald-600 transition-transform shrink-0 ml-4 ${isOpen ? 'rotate-180' : ''}`} />
               </button>
               {isOpen && (
-                <div className="p-5 pt-0 text-xs text-slate-300 leading-relaxed border-t border-slate-800/60 animate-fade-in">
+                <div className="p-5 pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/60 animate-fade-in">
                   {item.answer}
                 </div>
               )}

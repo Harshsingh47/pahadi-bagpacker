@@ -2,17 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap');
 
 :root {
   --font-outfit: 'Outfit', sans-serif;
   --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-cursive: 'Caveat', cursive;
+  --font-serif-italic: 'Playfair Display', serif;
+}
+
+.font-cursive {
+  font-family: var(--font-cursive);
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif-italic);
 }
 
 body {
   font-family: var(--font-jakarta);
-  background-color: #0B131F;
-  color: #E2E8F0;
+  background-color: #F8FAF9;
+  color: #0F172A;
   overflow-x: hidden;
 }
 
@@ -25,45 +35,45 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0F172A;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E3A2B;
+  background: #059669;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+  background: #047857;
 }
 
-/* Glassmorphism utilities */
+/* Glassmorphism utilities for light mode */
 .glass-card {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
 .glass-nav {
-  background: rgba(11, 19, 31, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 /* Keyframes & Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Fix Date Input Calendar Picker Icon Visibility on Dark Backgrounds across ALL browsers */
+/* Date Input Calendar Icon Visibility for Light Mode */
 input[type="date"] {
-  color-scheme: dark !important;
-  color: #FFFFFF !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%2310B981' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='18' x='3' y='4' rx='2' ry='2'/%3E%3Cline x1='16' x2='16' y1='2' y2='6'/%3E%3Cline x1='8' x2='8' y1='2' y2='6'/%3E%3Cline x1='3' x2='21' y1='10' y2='10'/%3E%3Ccircle cx='8' cy='14' r='1' fill='%2310B981'/%3E%3Ccircle cx='12' cy='14' r='1' fill='%2310B981'/%3E%3Ccircle cx='16' cy='16' r='1' fill='%2310B981'/%3E%3C/svg%3E");
+  color-scheme: light !important;
+  color: #0F172A !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23059669' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='18' height='18' x='3' y='4' rx='2' ry='2'/%3E%3Cline x1='16' x2='16' y1='2' y2='6'/%3E%3Cline x1='8' x2='8' y1='2' y2='6'/%3E%3Cline x1='3' x2='21' y1='10' y2='10'/%3E%3Ccircle cx='8' cy='14' r='1' fill='%23059669'/%3E%3Ccircle cx='12' cy='14' r='1' fill='%23059669'/%3E%3Ccircle cx='16' cy='14' r='1' fill='%23059669'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 22px 22px;

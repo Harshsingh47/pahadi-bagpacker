@@ -33,15 +33,15 @@ export default function TaxiCalculator() {
   };
 
   return (
-    <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-left shadow-2xl">
-      <h3 className="text-lg font-bold text-white mb-4">Instant Mountain Taxi Fare Estimator</h3>
+    <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 text-left shadow-xl">
+      <h3 className="text-lg font-bold text-slate-900 mb-4">Instant Mountain Taxi Fare Estimator</h3>
       <form onSubmit={handleCalculate} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label className="block text-xs text-slate-400 uppercase font-bold mb-1">Select Route</label>
+          <label className="block text-xs text-slate-500 uppercase font-bold mb-1.5">Select Route</label>
           <select 
             value={routeKey}
             onChange={(e) => setRouteKey(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white text-xs outline-none focus:border-emerald-500"
+            className="w-full bg-slate-50 border border-slate-300 p-3 rounded-xl text-slate-900 text-xs outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
           >
             <option value="delhi-manali">Delhi → Manali (530 km)</option>
             <option value="chandigarh-shimla">Chandigarh → Shimla (112 km)</option>
@@ -54,11 +54,11 @@ export default function TaxiCalculator() {
         </div>
 
         <div>
-          <label className="block text-xs text-slate-400 uppercase font-bold mb-1">Vehicle Category</label>
+          <label className="block text-xs text-slate-500 uppercase font-bold mb-1.5">Vehicle Category</label>
           <select 
             value={vehicleType}
             onChange={(e) => setVehicleType(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-xl text-white text-xs outline-none focus:border-emerald-500"
+            className="w-full bg-slate-50 border border-slate-300 p-3 rounded-xl text-slate-900 text-xs outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20"
           >
             <option value="sedan">Sedan (Dzire / Etios - 4 Seats)</option>
             <option value="suv">SUV (Innova / Ertiga / Thar - 6-7 Seats)</option>
@@ -67,7 +67,7 @@ export default function TaxiCalculator() {
         </div>
 
         <div className="flex items-end">
-          <button type="submit" className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md">
+          <button type="submit" className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md">
             Calculate Fare
           </button>
         </div>
@@ -76,17 +76,17 @@ export default function TaxiCalculator() {
       {result && (
         <div className="mt-6">
           {result.price === 0 ? (
-            <div className="bg-amber-950/60 border border-amber-500/40 p-4 rounded-xl text-amber-200 text-sm">
+            <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl text-amber-900 text-sm">
               ⚠️ <strong>Route Note:</strong> Sedan is not recommended for rugged Leh/Spiti routes. Please select SUV (Thar / Scorpio) or Tempo Traveller.
             </div>
           ) : (
-            <div className="bg-emerald-950/70 border border-emerald-500/40 p-5 rounded-2xl text-emerald-100 flex flex-col md:flex-row items-center justify-between gap-4 animate-fade-in">
+            <div className="bg-emerald-50/80 border border-emerald-200 p-5 rounded-2xl text-slate-900 flex flex-col md:flex-row items-center justify-between gap-4 animate-fade-in">
               <div>
-                <span className="text-xs uppercase font-mono tracking-wider text-emerald-400">Estimated One-Way Fare</span>
-                <div className="text-3xl font-extrabold text-white mt-1">₹{result.price.toLocaleString()}</div>
-                <p className="text-xs text-slate-300 mt-1">Includes Toll Tax, Driver Charges, Fuel & State Taxes. No hidden fees.</p>
+                <span className="text-xs uppercase font-mono tracking-wider text-emerald-800 font-bold">Estimated One-Way Fare</span>
+                <div className="text-3xl font-extrabold text-emerald-700 mt-1">₹{result.price.toLocaleString()}</div>
+                <p className="text-xs text-slate-600 mt-1">Includes Toll Tax, Driver Charges, Fuel & State Taxes. No hidden fees.</p>
               </div>
-              <Link href={`/booking?service=taxi&route=${routeKey}&vehicle=${vehicleType}`} className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl shadow-lg transition-all text-xs uppercase tracking-wider">
+              <Link href={`/booking?service=taxi&route=${routeKey}&vehicle=${vehicleType}`} className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider shrink-0">
                 Book This Ride &rarr;
               </Link>
             </div>
