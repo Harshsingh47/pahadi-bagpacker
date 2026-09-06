@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { MapPin, Calendar, Users, Compass, ArrowUpRight, ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 
 interface OrbItem {
   id: number;
@@ -20,79 +21,92 @@ const HERO_ORBS: OrbItem[] = [
 ];
 
 export default function HeroSection() {
-  const [activeIdx, setActiveIdx] = useState(2); // Start highlighted on Chopta (middle)
-  const [isPaused, setIsPaused] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
 
-  // Auto-scroll / rotate badges every 3.5 seconds
+  // Auto-rotate destination badges every 2 seconds (2000ms) continuously
   useEffect(() => {
-    if (isPaused) return;
     const interval = setInterval(() => {
       setActiveIdx((prev) => (prev + 1) % HERO_ORBS.length);
-    }, 3500);
+    }, 2000);
 
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, []);
 
   return (
-    <section className="relative min-h-screen pt-28 md:pt-36 pb-20 flex flex-col justify-between overflow-hidden">
-      {/* BACKGROUND IMAGE & CINEMATIC OVERLAYS */}
+    <section className="relative min-h-[90vh] pt-36 sm:pt-40 lg:pt-44 pb-16 flex flex-col justify-between overflow-hidden">
+      {/* BACKGROUND IMAGE & SCENIC MOUNTAIN OVERLAYS */}
       <div className="absolute inset-0 z-0">
-        <img src="/assets/hero-bg.jpg" alt="Majestic Himalayan Snow Peaks & Alpine River Valley" className="w-full h-full object-cover object-center brightness-90 transition-all duration-700" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/75"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-[#F8FAF9]"></div>
+        <img 
+          src="/assets/hero-bg.jpg" 
+          alt="Majestic Himalayan Snow Peaks & Alpine River Valley" 
+          className="w-full h-full object-cover object-center brightness-95" 
+        />
+        {/* Soft, crisp gradient vignette for clear contrast without darkening scenery */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/40 to-slate-950/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-transparent to-[#F8FAF9]"></div>
       </div>
 
       {/* HERO CONTENT GRID */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full my-auto py-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full my-auto py-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* LEFT COLUMN — CURSIVE TITLE, PILL BADGE & CTAS */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          {/* LEFT COLUMN — ELEGANT TYPOGRAPHY, BADGE & CTAS */}
+          <div className="lg:col-span-7 space-y-5 text-left">
             
             {/* TOP PILL BADGE */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white text-xs font-medium shadow-lg animate-fade-in">
-              <span className="px-2.5 py-0.5 rounded-full bg-white text-slate-950 font-bold text-[11px]">New</span>
-              <span className="text-slate-200">Travel Beyond Expectations</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md text-white text-xs font-medium shadow-lg">
+              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-bold text-[11px] uppercase tracking-wider">
+                <Sparkles className="w-3 h-3" /> New
+              </span>
+              <span className="text-slate-100 font-medium tracking-wide">Travel Beyond Expectations</span>
             </div>
 
-            {/* CURSIVE ELEGANT HERO HEADING */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-cursive text-white leading-tight font-normal drop-shadow-[0_6px_20px_rgba(0,0,0,0.9)] tracking-wide">
-              Travel Beyond the Ordinary
+            {/* ELEGANT SERIF & CURSIVE HERO HEADING */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-tight font-normal drop-shadow-md">
+              Travel Beyond the <span className="font-cursive italic text-emerald-300 font-normal">Ordinary</span>
             </h1>
 
             {/* DESCRIPTIVE BODY COPY */}
-            <p className="text-sm sm:text-base text-slate-200 max-w-lg leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="text-sm sm:text-base text-slate-200 max-w-lg leading-relaxed font-normal drop-shadow-sm">
               Explore extraordinary Himalayan places, compare travel options, and uncover experiences that match your travel style. Travel smarter, discover more, and make every moment count.
             </p>
 
             {/* GLASSMORPHISM CTA BUTTONS */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Link href="/destinations" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/30 backdrop-blur-md transition-all shadow-xl hover:scale-105">
-                Explore Destinations <span className="text-base">↗</span>
+              <Link 
+                href="/destinations" 
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/30 backdrop-blur-md transition-all duration-300 shadow-lg hover:scale-105"
+              >
+                <Compass className="w-4 h-4 text-emerald-300" />
+                Explore Destinations 
+                <ArrowUpRight className="w-4 h-4 text-white/80" />
               </Link>
-              <Link href="/itinerary-planner" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl hover:scale-105 transition-all">
-                Plan Your Trip &rarr;
+              
+              <Link 
+                href="/itinerary-planner" 
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl shadow-emerald-900/30 transition-all duration-300 hover:scale-105"
+              >
+                Plan Your Trip 
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
           </div>
 
-          {/* RIGHT COLUMN — FLOATING CIRCULAR DESTINATION ORBS WITH FAR-RIGHT INDICATOR */}
+          {/* RIGHT COLUMN — FLOATING CIRCULAR DESTINATION ORBS */}
           <div 
             className="lg:col-span-5 relative flex items-center justify-end"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
           >
             
             {/* FLOATING ORBS LIST */}
-            <div className="space-y-4 w-full max-w-sm">
+            <div className="space-y-3 w-full max-w-xs sm:max-w-sm">
               {HERO_ORBS.map((orb, index) => {
                 const isActive = activeIdx === index;
                 
                 // Curve stagger styling
                 let indentClass = 'pr-0';
-                if (index === 1 || index === 3) indentClass = 'pr-4 sm:pr-8';
-                if (index === 2) indentClass = 'pr-8 sm:pr-14';
+                if (index === 1 || index === 3) indentClass = 'pr-3 sm:pr-6';
+                if (index === 2) indentClass = 'pr-6 sm:pr-10';
 
                 return (
                   <Link 
@@ -100,40 +114,52 @@ export default function HeroSection() {
                     href={orb.href}
                     onClick={() => setActiveIdx(index)}
                     onMouseEnter={() => setActiveIdx(index)}
-                    className={`flex items-center justify-end gap-4 group transition-all duration-500 transform ${indentClass} ${isActive ? '-translate-x-3 scale-105' : 'hover:-translate-x-1 opacity-85 hover:opacity-100'}`}
+                    className={`flex items-center justify-end gap-3 sm:gap-4 group transition-all duration-300 transform ${indentClass} ${
+                      isActive 
+                        ? '-translate-x-2' 
+                        : 'hover:-translate-x-1 opacity-75 hover:opacity-100'
+                    }`}
                   >
                     <div className="text-right">
-                      <h4 className={`text-lg font-serif-italic transition-colors drop-shadow-md ${isActive ? 'text-emerald-300 font-bold text-xl' : 'text-white group-hover:text-emerald-300'}`}>
+                      <h4 className={`transition-all duration-300 ${
+                        isActive 
+                          ? 'text-emerald-300 font-bold text-base sm:text-lg drop-shadow-md' 
+                          : 'text-white font-medium text-sm group-hover:text-emerald-300'
+                      }`}>
                         {orb.name}
                       </h4>
-                      <span className={`text-xs block transition-colors ${isActive ? 'text-emerald-200 font-semibold' : 'text-slate-300'}`}>
+                      <span className={`text-[11px] sm:text-xs block transition-colors ${
+                        isActive 
+                          ? 'text-emerald-200 font-medium' 
+                          : 'text-slate-300/80 font-normal'
+                      }`}>
                         {orb.sub}
                       </span>
                     </div>
 
-                    {/* CIRCULAR IMAGE BADGE */}
-                    <div className={`relative rounded-full overflow-hidden transition-all duration-500 shrink-0 shadow-2xl ${
+                    {/* TIGHT CIRCULAR IMAGE BADGE WITH FIXED ASPECT-SQUARE SIZE */}
+                    <div className={`relative rounded-full overflow-hidden transition-all duration-300 shrink-0 aspect-square shadow-xl ${
                       isActive 
-                        ? 'w-24 h-24 sm:w-28 sm:h-28 border-2 border-white ring-4 ring-emerald-400/60 scale-105 shadow-emerald-500/30' 
-                        : 'w-18 h-18 sm:w-20 sm:h-20 border-2 border-white/70 group-hover:border-white'
+                        ? 'w-16 h-16 sm:w-20 sm:h-20 border-2 border-white ring-4 ring-emerald-400/80 shadow-emerald-500/40 scale-105' 
+                        : 'w-12 h-12 sm:w-14 sm:h-14 border border-white/60 group-hover:border-white'
                     }`}>
-                      <img src={orb.img} alt={orb.name} className="w-full h-full object-cover" />
+                      <img src={orb.img} alt={orb.name} className="w-full h-full object-cover rounded-full" />
                     </div>
                   </Link>
                 );
               })}
             </div>
 
-            {/* VERTICAL DOTS INDICATOR POSITIONED ON THE FAR RIGHT SIDE (BEHIND/BESIDE BADGES) */}
-            <div className="hidden sm:flex flex-col gap-3.5 ml-6 pl-2 z-20 border-l border-white/10 py-4">
+            {/* VERTICAL DOTS INDICATOR ON THE FAR RIGHT */}
+            <div className="hidden sm:flex flex-col gap-2.5 ml-4 pl-3 z-20 border-l border-white/20 py-2 items-center">
               {HERO_ORBS.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveIdx(index)}
-                  className={`transition-all duration-300 rounded-full ${
+                  className={`transition-all duration-300 ${
                     activeIdx === index 
-                      ? 'w-3 h-3 bg-white ring-4 ring-emerald-400/50 shadow-glow scale-125' 
-                      : 'w-2 h-2 bg-white/40 hover:bg-white/80'
+                      ? 'h-5 w-2 bg-emerald-400 rounded-full shadow-[0_0_10px_rgba(52,211,153,0.8)]' 
+                      : 'w-2 h-2 bg-white/40 hover:bg-white/80 rounded-full'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -145,36 +171,74 @@ export default function HeroSection() {
         </div>
 
         {/* SEARCH / TRIP PLANNING PANEL INTEGRATED AT BOTTOM OF HERO */}
-        <div className="mt-12 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-2xl border border-slate-200 text-left">
-          <form action="/itinerary-planner" method="GET" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-8 sm:mt-10 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-2xl border border-slate-200/80 ring-1 ring-slate-900/5 text-left">
+          <form action="/itinerary-planner" method="GET" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            
+            {/* DESTINATION FIELD */}
             <div>
-              <label className="block text-xs uppercase tracking-wider font-bold text-slate-600 mb-1.5">Destination</label>
-              <select name="destination" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:border-emerald-600 outline-none">
-                <option value="all">Himachal & Uttarakhand</option>
-                <option value="manali">Manali & Solang Valley</option>
-                <option value="spiti">Spiti Valley Circuit</option>
-                <option value="rishikesh">Rishikesh & Chopta</option>
-                <option value="kasol">Kasol & Parvati Valley</option>
-              </select>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                Destination
+              </label>
+              <div className="relative">
+                <select 
+                  name="destination" 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-medium focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all appearance-none cursor-pointer pr-8"
+                >
+                  <option value="all">Himachal & Uttarakhand</option>
+                  <option value="manali">Manali & Solang Valley</option>
+                  <option value="spiti">Spiti Valley Circuit</option>
+                  <option value="rishikesh">Rishikesh & Chopta</option>
+                  <option value="kasol">Kasol & Parvati Valley</option>
+                </select>
+                <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             </div>
+
+            {/* TRAVEL SEASON / DATE FIELD */}
             <div>
-              <label className="block text-xs uppercase tracking-wider font-bold text-slate-600 mb-1.5">Travel Season / Date</label>
-              <input type="date" name="travel_date" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:border-emerald-600 outline-none" />
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-emerald-600" />
+                Travel Season / Date
+              </label>
+              <input 
+                type="date" 
+                name="travel_date" 
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-medium focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all cursor-pointer" 
+              />
             </div>
+
+            {/* TRAVELERS FIELD */}
             <div>
-              <label className="block text-xs uppercase tracking-wider font-bold text-slate-600 mb-1.5">Travelers</label>
-              <select name="travelers" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:border-emerald-600 outline-none">
-                <option value="solo">Solo Backpacker (1)</option>
-                <option value="couple">Couple / Duo (2)</option>
-                <option value="small_group">Friends Group (3-6)</option>
-                <option value="large_group">Large Group (7+)</option>
-              </select>
+              <label className="block text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1 flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5 text-emerald-600" />
+                Travelers
+              </label>
+              <div className="relative">
+                <select 
+                  name="travelers" 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-900 font-medium focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all appearance-none cursor-pointer pr-8"
+                >
+                  <option value="solo">Solo Backpacker (1)</option>
+                  <option value="couple">Couple / Duo (2)</option>
+                  <option value="small_group">Friends Group (3-6)</option>
+                  <option value="large_group">Large Group (7+)</option>
+                </select>
+                <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             </div>
+
+            {/* SUBMIT BUTTON */}
             <div className="flex items-end">
-              <button type="submit" className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm uppercase tracking-wider rounded-xl transition-all shadow-md">
-                Plan My Trip
+              <button 
+                type="submit" 
+                className="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 h-[38px]"
+              >
+                <span>Plan My Trip</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
+
           </form>
         </div>
 

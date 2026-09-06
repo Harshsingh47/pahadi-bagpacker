@@ -1,6 +1,12 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { Compass, Calendar, Mountain, MapPin, Car, ShieldCheck, HeartHandshake, Utensils, CheckCircle2, ArrowRight } from 'lucide-react';
+import { 
+  Compass, Calendar, Mountain, MapPin, Car, ShieldCheck, HeartHandshake, 
+  Utensils, CheckCircle2, ArrowRight, Navigation, Crosshair, Sparkles, 
+  Clock, Thermometer, Bus, Plane, Coffee, Home, Route, Check, Star, Wind
+} from 'lucide-react';
 
 interface Attraction {
   title: string;
@@ -197,7 +203,7 @@ const DESTINATIONS: Record<string, DestinationData> = {
     subtitle: 'MINI SWITZERLAND OF INDIA',
     state: 'Uttarakhand',
     altitude: '2,680 meters to 4,000 meters',
-    bestTime: 'March - June (Green Meadows) / Oct - Dec (Snow Trek)',
+    bestTime: 'March - June / Oct - Dec',
     idealDuration: '3 to 4 Days',
     temp: '-5°C to 20°C',
     nearestHub: 'Dehradun Airport (225 km) / Haridwar Station (230 km)',
@@ -306,74 +312,156 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
   };
 
   return (
-    <div className="pt-28 pb-24 bg-[#F8FAF9] min-h-screen text-slate-900">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="bg-[#F8FAF9] min-h-screen text-slate-900 font-sans">
+      
+      {/* HERO SECTION — CARTOGRAPHIC EXPEDITION CANVAS (EXTENDS TO TOP 0 UNDER HEADER) */}
+      <section className="relative bg-[#09111E] text-white pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 overflow-hidden border-b border-slate-800 shadow-2xl">
+        {/* SVG Elevation Contour Lines & Vector Grid Background */}
+        <div className="absolute inset-0 pointer-events-none opacity-20">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-dest" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-dest)" />
+            <path d="M-100,200 Q300,50 700,250 T1500,100 T2100,400" fill="none" stroke="rgba(16,185,129,0.3)" strokeWidth="1.5" strokeDasharray="6,6" />
+            <path d="M-200,450 Q400,200 900,480 T1700,300" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+            <circle cx="85%" cy="35%" r="220" fill="none" stroke="rgba(16,185,129,0.12)" strokeWidth="1" />
+            <circle cx="85%" cy="35%" r="140" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+          </svg>
+        </div>
 
-        {/* HERO BANNER — CRITICAL FIX: Bright white readable text on dark mountain background */}
-        <div className="relative rounded-3xl overflow-hidden mb-12 shadow-2xl border border-slate-200/80">
-          <img src={dest.heroImg} alt={dest.name} className="w-full h-80 sm:h-[480px] object-cover object-center brightness-75 scale-105" />
+        {/* Ambient Gradient Glows */}
+        <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           
-          {/* Multi-layered dark gradient overlay ensuring crisp contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-black/30"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/80 via-transparent to-transparent"></div>
+          {/* BREADCRUMB NAV */}
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6 uppercase tracking-wider">
+            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/destinations" className="hover:text-emerald-400 transition-colors">Destinations</Link>
+            <span>/</span>
+            <span className="text-emerald-400 font-bold">{dest.name}</span>
+          </div>
 
-          <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-10 right-6 sm:right-10 z-10">
-            <div className="flex flex-wrap items-center gap-2 mb-3">
-              <span className="px-3 py-1 bg-emerald-600 text-white text-[11px] font-mono font-bold uppercase rounded-full shadow-md">
-                {dest.state}
-              </span>
-              <span className="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[11px] font-mono font-semibold rounded-full border border-white/30">
-                📍 {dest.altitude}
-              </span>
-            </div>
-
-            <span className="text-xs sm:text-sm font-mono text-emerald-300 font-bold uppercase tracking-widest block mb-1">
-              {dest.subtitle}
-            </span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* HERO TITLE - ALWAYS PURE WHITE FOR MAXIMUM READABILITY */}
-            <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold text-white uppercase font-heading tracking-tight leading-none drop-shadow-md">
-              {dest.name}
-            </h1>
+            {/* LEFT EXPEDITION DETAILS */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="px-3.5 py-1 bg-emerald-600/90 text-white text-[11px] font-mono font-bold uppercase rounded-full tracking-wider shadow-md backdrop-blur-sm border border-emerald-400/30">
+                  📌 {dest.state}
+                </span>
+                <span className="px-3.5 py-1 bg-slate-800/80 backdrop-blur-md text-emerald-300 text-[11px] font-mono font-semibold rounded-full border border-slate-700/80 flex items-center gap-1.5">
+                  <Crosshair className="w-3.5 h-3.5 text-emerald-400" /> {dest.altitude}
+                </span>
+              </div>
+
+              <div>
+                <span className="text-xs sm:text-sm font-mono text-emerald-400 font-bold uppercase tracking-widest block mb-2">
+                  {dest.subtitle}
+                </span>
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white uppercase font-heading tracking-tight leading-none drop-shadow-lg">
+                  {dest.name}
+                </h1>
+              </div>
+
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+                {dest.overview}
+              </p>
+
+              {/* HERO METRICS TICKER GRID */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
+                    <Calendar className="w-3 h-3" /> Best Season
+                  </span>
+                  <span className="text-xs font-bold text-white block truncate">{dest.bestTime}</span>
+                </div>
+
+                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> Ideal Stay
+                  </span>
+                  <span className="text-xs font-bold text-white block truncate">{dest.idealDuration}</span>
+                </div>
+
+                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
+                    <Thermometer className="w-3 h-3" /> Weather
+                  </span>
+                  <span className="text-xs font-bold text-white block truncate">{dest.temp}</span>
+                </div>
+
+                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
+                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
+                    <MapPin className="w-3 h-3" /> Nearest Hub
+                  </span>
+                  <span className="text-xs font-bold text-white block truncate">{dest.nearestHub}</span>
+                </div>
+              </div>
+
+              {/* CTA BUTTONS */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Link 
+                  href={`/itinerary-planner?destination=${dest.slug}`}
+                  className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-emerald-900/50 flex items-center gap-2"
+                >
+                  Plan Custom {dest.name} Trip <Sparkles className="w-4 h-4" />
+                </Link>
+                <Link 
+                  href={`/taxi?destination=${dest.slug}`}
+                  className="px-5 py-3.5 bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all border border-slate-700 flex items-center gap-2"
+                >
+                  🚕 Book Cab <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+
+            </div>
+
+            {/* RIGHT POLAROID HERO IMAGE CARD */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 group">
+                <img 
+                  src={dest.heroImg} 
+                  alt={dest.name} 
+                  className="w-full h-80 sm:h-[420px] object-cover object-center group-hover:scale-105 transition-transform duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09111E] via-transparent to-black/20"></div>
+
+                {/* TOP RIGHT CORNER EMBLEM */}
+                <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-700 text-[11px] font-mono font-bold text-emerald-300 flex items-center gap-1.5 shadow-lg">
+                  <Navigation className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+                  HIMALAYAN DESTINATION
+                </div>
+
+                {/* BOTTOM FLOATING INFO BADGE */}
+                <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 p-4 rounded-2xl flex items-center justify-between gap-4 shadow-xl">
+                  <div>
+                    <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase block">EXPEDITION BASECAMP</span>
+                    <span className="text-sm font-extrabold text-white uppercase">{dest.name} Region</span>
+                  </div>
+                  <span className="px-3 py-1 bg-emerald-600 text-white font-mono text-xs font-bold rounded-lg shrink-0">
+                    Verified Route
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+      </section>
 
-        {/* QUICK INFO METRICS GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
-          <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase mb-1">
-              <Calendar className="w-4 h-4" /> Best Season
-            </div>
-            <strong className="text-slate-900 text-xs sm:text-sm block">{dest.bestTime}</strong>
-          </div>
-
-          <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase mb-1">
-              <Compass className="w-4 h-4" /> Ideal Stay
-            </div>
-            <strong className="text-slate-900 text-xs sm:text-sm block">{dest.idealDuration}</strong>
-          </div>
-
-          <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase mb-1">
-              <Mountain className="w-4 h-4" /> Weather Range
-            </div>
-            <strong className="text-slate-900 text-xs sm:text-sm block">{dest.temp}</strong>
-          </div>
-
-          <div className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-2 text-emerald-700 font-bold text-xs uppercase mb-1">
-              <MapPin className="w-4 h-4" /> Nearest Hub
-            </div>
-            <strong className="text-slate-900 text-xs sm:text-sm block">{dest.nearestHub}</strong>
-          </div>
-        </div>
-
-        {/* MAIN LAYOUT WITH SIDEBAR */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      {/* MAIN LAYOUT WITH SIDEBAR */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
 
           {/* LEFT CONTENT COLUMN */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-8 space-y-12">
             
             {/* OVERVIEW */}
             <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-sm space-y-4">
@@ -383,17 +471,26 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 {dest.overview}
               </p>
+
+              <div className="bg-emerald-50/80 border border-emerald-200/80 p-4 rounded-2xl flex items-start gap-3 mt-4">
+                <Sparkles className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <p className="text-xs text-emerald-900 font-medium leading-relaxed">
+                  <strong>Pahadi Local Insight:</strong> Always carry light layers even in summer months. Mountain weather changes quickly, and local mountain guides will ensure smooth travel across high-altitude passes.
+                </p>
+              </div>
             </section>
 
-            {/* TOP ATTRACTIONS GRID */}
+            {/* KEY ATTRACTIONS */}
             <section className="space-y-6">
-              <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading flex items-center gap-2">
-                <Mountain className="w-6 h-6 text-emerald-600" /> Key Attractions & Must-Do Experiences
-              </h2>
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading flex items-center gap-2">
+                  <Mountain className="w-6 h-6 text-emerald-600" /> Key Attractions & Must-Do Experiences
+                </h2>
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {dest.attractions.map((att, idx) => (
-                  <div key={idx} className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:border-emerald-500 hover:shadow-md transition-all flex flex-col justify-between">
+                  <div key={idx} className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:border-emerald-500 hover:shadow-md transition-all flex flex-col justify-between group">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-3">
                         <span className="text-2xl">{att.icon}</span>
@@ -401,7 +498,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
                           {att.tag}
                         </span>
                       </div>
-                      <h3 className="font-bold text-slate-900 text-base mb-2">{att.title}</h3>
+                      <h3 className="font-bold text-slate-900 text-base mb-2 group-hover:text-emerald-700 transition-colors">{att.title}</h3>
                       <p className="text-xs text-slate-600 leading-relaxed">{att.desc}</p>
                     </div>
                   </div>
@@ -413,7 +510,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
             {dest.treks && dest.treks.length > 0 && (
               <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
                 <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading flex items-center gap-2">
-                  🥾 Recommended Treks & Trails Around {dest.name}
+                  🥾 Recommended Treks Around {dest.name}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {dest.treks.map((t, idx) => (
@@ -491,10 +588,10 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
           </div>
 
           {/* RIGHT STICKY ACTION SIDEBAR */}
-          <div className="space-y-6">
+          <div className="lg:col-span-4 space-y-6">
             
             {/* BOOKING / PLANNER CARD */}
-            <div className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-xl sticky top-32 space-y-6">
+            <div className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-xl sticky top-28 space-y-6">
               <div className="border-b border-slate-100 pb-4">
                 <span className="text-xs font-mono font-bold text-emerald-700 uppercase tracking-wider block">PAHADI LOCAL PLANNING</span>
                 <h3 className="text-2xl font-extrabold text-slate-900 uppercase font-heading mt-1">Plan Your {dest.name} Trip</h3>
@@ -504,15 +601,15 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
               </div>
 
               <div className="space-y-3 text-xs font-medium text-slate-700">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>Zero Hidden Agent Commissions</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <HeartHandshake className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>100% Native Pahadi Drivers & Guides</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <Utensils className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>Verified Riverside Homestays</span>
                 </div>
@@ -552,8 +649,8 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
           </div>
 
         </div>
-
       </div>
+
     </div>
   );
 }

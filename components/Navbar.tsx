@@ -27,71 +27,110 @@ export default function Navbar() {
   return (
     <>
       {/* TOP ANNOUNCEMENT HEADER */}
-      <header className="bg-slate-100 border-b border-slate-200 text-xs py-2 px-4 hidden md:block">
+      <header className="bg-slate-950 border-b border-slate-800 text-slate-300 text-[11px] py-2 px-6 hidden md:block relative z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-6 text-slate-700 font-medium">
-            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-emerald-600" /> +91 98160 12345 / +91 88942 67890</span>
-            <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-emerald-600" /> info@pahadibagpackers.com</span>
-            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-emerald-600" /> Basecamps: Old Manali & Rishikesh</span>
+          <div className="flex items-center gap-6 font-mono">
+            <a href="tel:+919816012345" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
+              <Phone className="w-3 h-3 text-emerald-400" /> +91 98160 12345
+            </a>
+            <a href="mailto:info@pahadibagpackers.com" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
+              <Mail className="w-3 h-3 text-emerald-400" /> info@pahadibagpackers.com
+            </a>
+            <span className="flex items-center gap-1.5 text-slate-400">
+              <MapPin className="w-3 h-3 text-emerald-400" /> Basecamps: Old Manali & Rishikesh
+            </span>
           </div>
-          <div className="flex items-center gap-4 text-slate-600">
-            <span className="font-semibold text-emerald-700">Trusted Himalayan Local Experts</span>
-            <span className="text-slate-300">|</span>
-            <Link href="/faq" className="hover:text-emerald-700 transition-colors">FAQs</Link>
-            <Link href="/contact" className="hover:text-emerald-700 transition-colors">Contact</Link>
+
+          <div className="flex items-center gap-4">
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono font-bold text-[10px]">
+              🌲 Himachal Govt Registered
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full bg-teal-950 text-teal-400 border border-teal-800 font-mono font-bold text-[10px]">
+              🕉️ Uttarakhand Certified
+            </span>
+            <span className="text-slate-700">|</span>
+            <Link href="/faq" className="hover:text-white transition-colors">FAQs</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
           </div>
         </div>
       </header>
 
-      {/* MAIN STICKY NAVBAR */}
-      <nav className={`fixed top-0 md:top-8 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
+      {/* MAIN FLOATING GLASS PILL NAVBAR */}
+      <nav className={`fixed top-0 md:top-8 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'py-2' : 'py-4'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="glass-nav rounded-2xl border border-slate-200/80 px-4 sm:px-6 py-2.5 flex items-center justify-between shadow-lg shadow-slate-900/5">
+          <div className="glass-nav rounded-full border border-white/90 bg-white/90 backdrop-blur-xl px-5 sm:px-7 py-2 flex items-center justify-between shadow-xl shadow-slate-900/5 hover:border-emerald-500/30 transition-all duration-300">
             
-            {/* LOGO */}
+            {/* BRAND LOGO */}
             <Link href="/" className="flex items-center group py-1">
-              <img src="/assets/logo-transparent.png" alt="Pahadi Bagpackers Logo" className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform" />
+              <img
+                src="/assets/logo-transparent.png"
+                alt="Pahadi Bagpackers Logo"
+                className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              />
             </Link>
 
-            {/* DESKTOP NAV LINKS */}
-            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-              <Link href="/" className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${pathname === '/' ? 'text-emerald-700 bg-emerald-50 border border-emerald-200' : 'text-slate-700 hover:text-emerald-700 hover:bg-slate-100'}`}>
+            {/* DESKTOP NAV PILL LINKS */}
+            <div className="hidden lg:flex items-center gap-1 xl:gap-1.5">
+              <Link
+                href="/"
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  pathname === '/'
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}
+              >
                 Home
               </Link>
               
-              {/* DESTINATIONS MEGA MENU */}
-              <div className="relative group" onMouseEnter={() => setDestDropdownOpen(true)} onMouseLeave={() => setDestDropdownOpen(false)}>
-                <button className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1 transition-all">
-                  Destinations <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+              {/* DESTINATIONS MEGA MENU DROPDOWN */}
+              <div
+                className="relative group"
+                onMouseEnter={() => setDestDropdownOpen(true)}
+                onMouseLeave={() => setDestDropdownOpen(false)}
+              >
+                <button className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${
+                  pathname.startsWith('/destinations')
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}>
+                  <span>Destinations</span>
+                  <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
                 </button>
+
                 {destDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 w-[480px] z-50">
-                    <div className="bg-white border border-slate-200 rounded-2xl shadow-2xl p-4 animate-fade-in">
+                  <div className="absolute top-full left-0 pt-3 w-[520px] z-50">
+                    <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-3xl shadow-2xl p-5 animate-fade-in space-y-4">
+                      <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <span className="font-cursive text-emerald-700 text-lg">Featured Himalayan Regions</span>
+                        <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 uppercase tracking-wider">
+                          View All 16 →
+                        </Link>
+                      </div>
+
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-                          <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-slate-200">
+                        <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-200/60">
+                          <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-emerald-200/60">
                             <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
-                            <h5 className="font-bold text-xs text-emerald-800 uppercase tracking-wider">Himachal Pradesh</h5>
+                            <h5 className="font-extrabold text-xs text-emerald-900 uppercase tracking-wider">Himachal Pradesh</h5>
                           </div>
                           <div className="space-y-1 text-xs text-slate-700 font-medium">
-                            <Link href="/destinations/manali" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 transition-colors">Manali Valley</Link>
-                            <Link href="/destinations/spiti-valley" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 transition-colors">Spiti Valley Offbeat</Link>
-                            <Link href="/destinations/kasol" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 transition-colors">Kasol & Parvati Valley</Link>
-                            <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 transition-colors">Shimla & Kinnaur</Link>
-                            <Link href="/destinations/bir-billing" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 transition-colors">Bir Billing & Tirthan</Link>
+                            <Link href="/destinations/manali" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🏔️ Manali & Solang</Link>
+                            <Link href="/destinations/spiti-valley" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🏜️ Spiti Cold Desert</Link>
+                            <Link href="/destinations/kasol" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🌲 Kasol & Parvati</Link>
+                            <Link href="/destinations/bir-billing" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🪂 Bir Billing Paragliding</Link>
                           </div>
                         </div>
-                        <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-                          <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-slate-200">
-                            <span className="w-2 h-2 rounded-full bg-amber-600"></span>
-                            <h5 className="font-bold text-xs text-amber-800 uppercase tracking-wider">Uttarakhand</h5>
+
+                        <div className="bg-teal-50/50 p-4 rounded-2xl border border-teal-200/60">
+                          <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-teal-200/60">
+                            <span className="w-2 h-2 rounded-full bg-teal-600"></span>
+                            <h5 className="font-extrabold text-xs text-teal-900 uppercase tracking-wider">Uttarakhand</h5>
                           </div>
                           <div className="space-y-1 text-xs text-slate-700 font-medium">
-                            <Link href="/destinations/rishikesh" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-amber-100 hover:text-amber-900 transition-colors">Rishikesh Adventure</Link>
-                            <Link href="/destinations/chopta" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-amber-100 hover:text-amber-900 transition-colors">Chopta & Tungnath</Link>
-                            <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-amber-100 hover:text-amber-900 transition-colors">Auli Snow Slopes</Link>
-                            <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-amber-100 hover:text-amber-900 transition-colors">Valley of Flowers</Link>
-                            <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-amber-100 hover:text-amber-900 transition-colors">Kedarnath Trail</Link>
+                            <Link href="/destinations/rishikesh" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🌊 Rishikesh Ganga Rafting</Link>
+                            <Link href="/destinations/chopta" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🕉️ Chopta & Tungnath</Link>
+                            <Link href="/destinations/kedarkantha" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">❄️ Kedarkantha Summit</Link>
+                            <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🌸 Valley of Flowers</Link>
                           </div>
                         </div>
                       </div>
@@ -100,26 +139,36 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* TREKS MEGA MENU */}
-              <div className="relative group" onMouseEnter={() => setTreksDropdownOpen(true)} onMouseLeave={() => setTreksDropdownOpen(false)}>
-                <button className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 flex items-center gap-1 transition-all">
-                  Treks <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+              {/* TREKS MEGA MENU DROPDOWN */}
+              <div
+                className="relative group"
+                onMouseEnter={() => setTreksDropdownOpen(true)}
+                onMouseLeave={() => setTreksDropdownOpen(false)}
+              >
+                <button className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all duration-300 ${
+                  pathname.startsWith('/treks')
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}>
+                  <span>Treks</span>
+                  <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
                 </button>
+
                 {treksDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 w-[420px] z-50">
-                    <div className="bg-white border border-slate-200 rounded-2xl shadow-2xl p-4 animate-fade-in">
-                      <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="absolute top-full left-0 pt-3 w-[440px] z-50">
+                    <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-3xl shadow-2xl p-5 animate-fade-in">
+                      <div className="grid grid-cols-2 gap-4 text-xs">
                         <div>
-                          <h5 className="font-bold text-slate-500 uppercase tracking-wider mb-2 text-[11px]">By Level</h5>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 font-medium transition-colors">🌱 Easy Treks</Link>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 font-medium transition-colors">🌲 Moderate Passes</Link>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 font-medium transition-colors">🏔️ High Altitude</Link>
+                          <h5 className="font-extrabold text-slate-400 uppercase tracking-wider mb-2.5 text-[10px] font-mono">BY DIFFICULTY</h5>
+                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-100 hover:text-emerald-900 font-bold transition-all">🌱 Easy Weekend Treks</Link>
+                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-100 hover:text-emerald-900 font-bold transition-all">🌲 Moderate Alpine Passes</Link>
+                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-100 hover:text-emerald-900 font-bold transition-all">🏔️ High Altitude Summits</Link>
                         </div>
                         <div>
-                          <h5 className="font-bold text-slate-500 uppercase tracking-wider mb-2 text-[11px]">Featured Trails</h5>
-                          <Link href="/treks/hampta-pass" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 text-emerald-800 font-bold transition-colors">Hampta Pass Trek</Link>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 font-medium transition-colors">Kedarkantha Trek</Link>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2 rounded hover:bg-emerald-100 hover:text-emerald-900 font-medium transition-colors">Har Ki Dun Trek</Link>
+                          <h5 className="font-extrabold text-slate-400 uppercase tracking-wider mb-2.5 text-[10px] font-mono">FEATURED TRAILS</h5>
+                          <Link href="/treks/hampta-pass" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Hampta Pass Crossover</Link>
+                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Kedarkantha Snow Summit</Link>
+                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Har Ki Dun Valley Trek</Link>
                         </div>
                       </div>
                     </div>
@@ -127,20 +176,78 @@ export default function Navbar() {
                 )}
               </div>
 
-              <Link href="/taxi" className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 transition-all">Taxi</Link>
-              <Link href="/car-rental" className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 transition-all">Car Rental</Link>
-              <Link href="/bike-rental" className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 transition-all">Bike Rental</Link>
-              <Link href="/itinerary-planner" className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 transition-all">Itineraries</Link>
-              <Link href="/about" className="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:text-emerald-700 hover:bg-slate-100 transition-all">About</Link>
+              <Link
+                href="/taxi"
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  pathname === '/taxi'
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}
+              >
+                Taxi
+              </Link>
+              
+              <Link
+                href="/car-rental"
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  pathname === '/car-rental'
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}
+              >
+                Car Rental
+              </Link>
+
+              <Link
+                href="/bike-rental"
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  pathname === '/bike-rental'
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}
+              >
+                Bike Rental
+              </Link>
+
+              <Link
+                href="/itinerary-planner"
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  pathname === '/itinerary-planner'
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}
+              >
+                Itineraries
+              </Link>
+
+              <Link
+                href="/about"
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  pathname === '/about'
+                    ? 'text-white bg-emerald-600 shadow-md shadow-emerald-600/30'
+                    : 'text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/80'
+                }`}
+              >
+                About
+              </Link>
             </div>
 
-            {/* RIGHT CTA & MOBILE TOGGLE */}
+            {/* RIGHT ACTION BUTTON & MOBILE MENU TOGGLE */}
             <div className="flex items-center gap-3">
-              <Link href="/itinerary-planner" className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/20 hover:scale-[1.02] transition-all">
-                <span>Plan Your Trip</span> &rarr;
+              <Link
+                href="/itinerary-planner"
+                className="hidden sm:inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/30 hover:scale-105 transition-all duration-300"
+              >
+                <span>Plan Your Trip</span>
+                <span className="font-mono text-sm">↗</span>
               </Link>
-              <button onClick={() => setMobileMenuOpen(true)} className="lg:hidden p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200">
-                <Menu className="w-6 h-6" />
+
+              <button
+                onClick={() => setMobileMenuOpen(true)}
+                className="lg:hidden p-2.5 rounded-full bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200 transition-colors"
+                aria-label="Open Mobile Menu"
+              >
+                <Menu className="w-5 h-5" />
               </button>
             </div>
 
@@ -151,33 +258,35 @@ export default function Navbar() {
       {/* MOBILE MENU DRAWER */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex">
-          <div onClick={() => setMobileMenuOpen(false)} className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+          <div onClick={() => setMobileMenuOpen(false)} className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm"></div>
           <div className="relative ml-auto w-full max-w-xs bg-white text-slate-900 border-l border-slate-200 h-full p-6 overflow-y-auto flex flex-col justify-between z-10 animate-fade-in shadow-2xl">
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-slate-200">
                 <Link href="/" className="inline-block py-1">
                   <img src="/assets/logo-transparent.png" alt="Pahadi Bagpackers Logo" className="h-10 w-auto object-contain" />
                 </Link>
-                <button onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-lg bg-slate-100 text-slate-600 hover:text-slate-900">
+                <button onClick={() => setMobileMenuOpen(false)} className="p-2 rounded-full bg-slate-100 text-slate-600 hover:text-slate-900">
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <div className="py-6 space-y-3 font-semibold text-sm">
-                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-emerald-700 font-bold">Home</Link>
-                <Link href="/destinations" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Destinations</Link>
-                <Link href="/treks" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Treks & Trails</Link>
-                <Link href="/taxi" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Taxi & Transfers</Link>
-                <Link href="/car-rental" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Car Rental</Link>
-                <Link href="/bike-rental" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Bike Rental</Link>
-                <Link href="/itinerary-planner" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Itinerary Planner</Link>
-                <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">About Us</Link>
-                <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Travel Stories</Link>
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-700 hover:text-emerald-700">Contact & Basecamp</Link>
+
+              <div className="py-6 space-y-2 font-bold text-xs uppercase tracking-wider">
+                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full bg-emerald-50 text-emerald-800">Home</Link>
+                <Link href="/destinations" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Destinations</Link>
+                <Link href="/treks" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Treks & Trails</Link>
+                <Link href="/taxi" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Taxi & Transfers</Link>
+                <Link href="/car-rental" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Car Rental</Link>
+                <Link href="/bike-rental" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Bike Rental</Link>
+                <Link href="/itinerary-planner" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Itinerary Planner</Link>
+                <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">About Us</Link>
+                <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Travel Stories</Link>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block py-2.5 px-4 rounded-full hover:bg-slate-100 text-slate-700">Contact & Basecamp</Link>
               </div>
             </div>
+
             <div className="pt-6 border-t border-slate-200">
-              <Link href="/itinerary-planner" onClick={() => setMobileMenuOpen(false)} className="w-full block text-center py-3 rounded-xl bg-emerald-600 text-white font-bold uppercase tracking-wider text-xs shadow-lg">
-                Plan Your Himalayan Trip
+              <Link href="/itinerary-planner" onClick={() => setMobileMenuOpen(false)} className="w-full block text-center py-3.5 rounded-full bg-emerald-600 text-white font-bold uppercase tracking-wider text-xs shadow-lg shadow-emerald-600/30">
+                Plan Your Himalayan Trip ↗
               </Link>
             </div>
           </div>

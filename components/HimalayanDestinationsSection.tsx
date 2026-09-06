@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Compass, MapPin, ArrowUpRight, ChevronLeft, ChevronRight, Star, Trees, Waves, Snowflake, Sparkles } from 'lucide-react';
 
 interface Destination {
   slug: string;
@@ -188,14 +189,14 @@ export default function HimalayanDestinationsSection() {
     }
   }, [currentIndex, N]);
 
-  // Smooth auto-scroll timer every 3.5 seconds
+  // Smooth auto-scroll timer every 2 seconds (2000ms)
   useEffect(() => {
     if (isPaused || N === 0) return;
 
     const interval = setInterval(() => {
       setEnableTransition(true);
       setCurrentIndex((prev) => prev + 1);
-    }, 3500);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [isPaused, N]);
@@ -218,27 +219,29 @@ export default function HimalayanDestinationsSection() {
   return (
     <section className="py-16 bg-[#F8FAF9] relative overflow-hidden w-full">
       {/* DECORATIVE AMBIENT BACKGROUND GLOWS MATCHING HERO THEME */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-teal-200/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-teal-200/25 rounded-full blur-3xl pointer-events-none"></div>
 
       {/* HEADER & FILTER TABS (FULL SCREEN WIDTH) */}
       <div className="w-full px-6 sm:px-12 lg:px-16 relative z-10">
         
-        {/* SECTION HEADER MATCHING HERO SECTION TYPOGRAPHY & BADGE STYLING */}
+        {/* SECTION HEADER WITH CLEAN EXECUTIVE TYPOGRAPHY & BADGE */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
           <div>
             {/* HERO-STYLE CAPSULE BADGE */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold shadow-sm mb-3">
-              <span className="px-2 py-0.5 rounded-full bg-emerald-600 text-white font-bold text-[10px] tracking-wider uppercase">Handcrafted</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold shadow-xs mb-3">
+              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-bold text-[10px] uppercase tracking-wider">
+                <Sparkles className="w-3 h-3" /> Handcrafted
+              </span>
               <span>Himalayan Escapes & Basecamps</span>
             </div>
 
-            {/* CURSIVE ELEGANT DISPLAY HEADING MATCHING HERO TITLE */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-cursive text-slate-900 font-normal leading-tight tracking-wide">
-              Explore Beyond the Ordinary
+            {/* CLEAN EXECUTIVE DISPLAY HEADING */}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+              Explore Beyond the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-700">Ordinary</span>
             </h2>
 
-            <p className="text-slate-600 text-xs sm:text-sm max-w-xl mt-2 leading-relaxed">
+            <p className="text-slate-600 text-sm max-w-xl mt-2 leading-relaxed font-normal">
               From iconic alpine mountain towns to high-altitude cold deserts, compare handpicked destinations and make every Pahadi journey count.
             </p>
           </div>
@@ -246,47 +249,53 @@ export default function HimalayanDestinationsSection() {
           <div className="flex items-center gap-4">
             <Link
               href="/destinations"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-300 group"
             >
               <span>View All 16 Destinations</span>
-              <span className="group-hover:translate-x-1 transition-transform">↗</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Link>
           </div>
         </div>
 
-        {/* HERO-STYLED PILL FILTER TABS */}
-        <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden border-b border-slate-200/80">
+        {/* CLEAN PILL FILTER TABS WITH LUCIDE ICONS */}
+        <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-8 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden border-b border-slate-200/80">
           {[
-            { id: 'all', label: '🏔️ All Escapes', count: destinations.length },
-            { id: 'himachal', label: '🌲 Himachal Pradesh', count: destinations.filter((d) => d.region === 'himachal').length },
-            { id: 'uttarakhand', label: '🌊 Uttarakhand', count: destinations.filter((d) => d.region === 'uttarakhand').length },
-            { id: 'highAltitude', label: '❄️ High Altitude (>2,500m)', count: destinations.filter((d) => d.highAltitude).length }
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveFilter(tab.id as any)}
-              className={`px-6 py-3 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap ${
-                activeFilter === tab.id
-                  ? 'bg-emerald-600 text-white shadow-xl shadow-emerald-600/30 scale-105 ring-2 ring-emerald-400/50'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/90 hover:text-slate-900 shadow-sm'
-              }`}
-            >
-              <span>{tab.label}</span>
-              <span
-                className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
-                  activeFilter === tab.id ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
+            { id: 'all', label: 'All Escapes', icon: Compass, count: destinations.length },
+            { id: 'himachal', label: 'Himachal Pradesh', icon: Trees, count: destinations.filter((d) => d.region === 'himachal').length },
+            { id: 'uttarakhand', label: 'Uttarakhand', icon: Waves, count: destinations.filter((d) => d.region === 'uttarakhand').length },
+            { id: 'highAltitude', label: 'High Altitude (>2,500m)', icon: Snowflake, count: destinations.filter((d) => d.highAltitude).length }
+          ].map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeFilter === tab.id;
+
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveFilter(tab.id as any)}
+                className={`px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap ${
+                  isActive
+                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/25 scale-[1.02] ring-2 ring-emerald-400/40'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/90 hover:text-slate-900 shadow-xs'
                 }`}
               >
-                {tab.count}
-              </span>
-            </button>
-          ))}
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-emerald-600'}`} />
+                <span>{tab.label}</span>
+                <span
+                  className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+                    isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
+                  }`}
+                >
+                  {tab.count}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* FULL SCREEN EDGE-TO-EDGE SPOTLIGHT CAROUSEL TRACK */}
       <div
-        className="w-full relative py-6 overflow-hidden z-10"
+        className="w-full relative py-4 overflow-hidden z-10"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -294,23 +303,23 @@ export default function HimalayanDestinationsSection() {
         <button
           onClick={handlePrev}
           aria-label="Previous destination"
-          className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-40 w-14 h-14 rounded-full bg-white/95 text-slate-900 hover:bg-emerald-600 hover:text-white border border-slate-200/90 shadow-2xl backdrop-blur-xl transition-all duration-300 flex items-center justify-center font-black text-2xl hover:scale-110 group cursor-pointer"
+          className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/95 text-slate-900 hover:bg-emerald-600 hover:text-white border border-slate-200/90 shadow-xl backdrop-blur-md transition-all duration-300 flex items-center justify-center font-bold text-xl hover:scale-110 group cursor-pointer"
         >
-          <span className="group-hover:-translate-x-0.5 transition-transform">‹</span>
+          <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
         </button>
 
         {/* FLOATING RIGHT SIDE ARROW */}
         <button
           onClick={handleNext}
           aria-label="Next destination"
-          className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-40 w-14 h-14 rounded-full bg-white/95 text-slate-900 hover:bg-emerald-600 hover:text-white border border-slate-200/90 shadow-2xl backdrop-blur-xl transition-all duration-300 flex items-center justify-center font-black text-2xl hover:scale-110 group cursor-pointer"
+          className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/95 text-slate-900 hover:bg-emerald-600 hover:text-white border border-slate-200/90 shadow-xl backdrop-blur-md transition-all duration-300 flex items-center justify-center font-bold text-xl hover:scale-110 group cursor-pointer"
         >
-          <span className="group-hover:translate-x-0.5 transition-transform">›</span>
+          <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
         </button>
 
         {/* FULL SCREEN SILKY SLIDING TRACK */}
         <div
-          className={`flex items-center gap-7 py-6 ${
+          className={`flex items-center gap-7 py-4 ${
             enableTransition ? 'transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]' : ''
           }`}
           style={{
@@ -327,84 +336,84 @@ export default function HimalayanDestinationsSection() {
                   setEnableTransition(true);
                   setCurrentIndex(index);
                 }}
-                className={`w-[340px] flex-shrink-0 bg-white overflow-hidden cursor-pointer flex flex-col justify-between ${
+                className={`w-[340px] min-h-[480px] flex-shrink-0 bg-white overflow-hidden cursor-pointer flex flex-col justify-between ${
                   enableTransition ? 'transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]' : ''
                 } ${
                   isCenter
-                    ? 'scale-105 lg:scale-110 z-20 opacity-100 border-2 border-emerald-500 ring-4 ring-emerald-500/30 shadow-[0_30px_70px_-15px_rgba(5,150,105,0.35)] rounded-[2.5rem]'
-                    : 'scale-95 z-10 opacity-70 hover:opacity-100 border border-slate-200/90 shadow-lg rounded-[2.2rem]'
+                    ? 'scale-105 lg:scale-108 z-20 opacity-100 border-2 border-emerald-500 ring-4 ring-emerald-500/25 shadow-2xl rounded-3xl'
+                    : 'scale-[0.97] z-10 opacity-75 hover:opacity-100 border border-slate-200/90 shadow-md rounded-3xl'
                 }`}
               >
                 {/* IMAGE CONTAINER WITH RICH GRADIENT OVERLAY */}
-                <div className="relative h-60 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.name}
                     className={`w-full h-full object-cover ${
                       enableTransition ? 'transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]' : ''
-                    } ${isCenter ? 'scale-110' : 'scale-100'}`}
+                    } ${isCenter ? 'scale-105' : 'scale-100'}`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
 
                   {/* TOP BADGES */}
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
                     <span className={`px-3 py-1 text-[11px] font-bold rounded-full backdrop-blur-md shadow-md ${
                       isCenter
                         ? 'bg-emerald-600 text-white border border-emerald-400'
-                        : 'bg-white/90 text-[#047857] border border-white/50'
+                        : 'bg-white/90 text-emerald-800 border border-white/50'
                     }`}>
                       {item.tag}
                     </span>
                     <span className="px-3 py-1 bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-white text-[11px] font-mono font-bold rounded-full shadow-md flex items-center gap-1">
-                      <span>📍</span> {item.altitude}
+                      <MapPin className="w-3 h-3 text-emerald-400" /> {item.altitude}
                     </span>
                   </div>
 
                   {/* RATING FLOATING BADGE */}
                   <div className="absolute bottom-3 left-3.5 flex items-center gap-1.5 px-3 py-1 bg-slate-900/85 backdrop-blur-md rounded-full text-amber-400 font-bold text-xs border border-white/10 shadow-sm">
-                    <span>★</span>
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                     <span className="text-white font-semibold">{item.rating}</span>
                     <span className="text-slate-400 text-[10px]">({item.reviews})</span>
                   </div>
                 </div>
 
                 {/* CARD BODY CONTENT */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div>
-                    <div className="flex items-center justify-between mb-2 text-[11px] uppercase tracking-wider font-bold text-emerald-700">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between mb-1.5 text-[11px] uppercase tracking-wider font-bold text-emerald-700">
+                      <div className="flex items-center gap-1.5">
                         <span>{item.region === 'himachal' ? 'Himachal Pradesh' : 'Uttarakhand'}</span>
                         <span>•</span>
-                        <span className="text-slate-400 font-normal">{item.duration}</span>
+                        <span className="text-slate-500 font-medium">{item.duration}</span>
                       </div>
                       {isCenter && (
-                        <span className="text-[10px] text-emerald-600 font-mono font-bold uppercase tracking-wider bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                          ★ Highlighted
+                        <span className="text-[10px] text-emerald-700 font-mono font-bold uppercase tracking-wider bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                          Highlighted
                         </span>
                       )}
                     </div>
                     <h3 className={`font-bold transition-colors duration-300 ${
-                      isCenter ? 'text-2xl font-black text-slate-900' : 'text-xl text-slate-800'
+                      isCenter ? 'text-xl font-extrabold text-slate-900' : 'text-lg text-slate-800'
                     }`}>
                       {item.name}
                     </h3>
-                    <p className="text-slate-600 text-xs leading-relaxed mt-2 line-clamp-2">
+                    <p className="text-slate-600 text-xs leading-relaxed mt-1.5 line-clamp-2">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* FOOTER ACTION BUTTON */}
-                  <div className="pt-4 border-t border-slate-100">
+                  {/* FOOTER ACTION BUTTON - NEVER TRUNCATED */}
+                  <div className="pt-3 border-t border-slate-100 mt-auto">
                     <Link
                       href={item.slugUrl}
-                      className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn ${
+                      className={`w-full py-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm transition-all duration-300 flex items-center justify-center gap-2 group/btn ${
                         isCenter
-                          ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-600/30'
+                          ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/25'
                           : 'bg-slate-900 hover:bg-emerald-600 text-white'
                       }`}
                     >
                       <span>Explore Destination</span>
-                      <span className="group-hover/btn:translate-x-1 transition-transform font-mono">↗</span>
+                      <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                     </Link>
                   </div>
                 </div>

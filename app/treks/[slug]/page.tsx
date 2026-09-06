@@ -1,6 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 
+export function generateStaticParams() {
+  return [
+    { slug: 'hampta-pass' },
+    { slug: 'beas-kund' },
+    { slug: 'bhrigu-lake' },
+    { slug: 'chopta-chandrashila' },
+    { slug: 'kheerganga' },
+    { slug: 'pin-parvati' },
+  ];
+}
+
 export default function TrekDetailPage({ params }: { params: { slug: string } }) {
   const slug = params.slug || 'hampta-pass';
   const name = slug.replace('-', ' ').toUpperCase();
