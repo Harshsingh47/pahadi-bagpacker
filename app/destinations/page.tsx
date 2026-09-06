@@ -309,38 +309,37 @@ export default function DestinationsPage() {
     <div className="pb-24 bg-[#F8FAF9] min-h-screen text-slate-900">
       
       {/* 🗺️ EXPEDITION TOPOGRAPHIC CARTOGRAPHY HERO SECTION */}
-      <div className="relative bg-[#09111E] text-white pt-32 sm:pt-38 lg:pt-40 pb-16 sm:pb-24 overflow-hidden mb-12 border-b border-slate-800/80">
+      <div className="relative bg-[#F8FAF9] text-slate-900 pt-32 sm:pt-38 lg:pt-40 pb-16 sm:pb-24 overflow-hidden mb-12 border-b border-slate-200/90 shadow-sm">
         
         {/* RICH STYLIZED TOPOGRAPHIC CARTOGRAPHY BACKGROUND CANVAS */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-950/40 via-[#09111E] to-[#060B14]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-teal-950/30 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-100/60 via-[#F8FAF9] to-slate-100"></div>
 
           {/* TOPOGRAPHIC ELEVATION VECTOR MAP CONTOURS & ROADS/RIVERS LAYER */}
-          <svg className="w-full h-full opacity-25" viewBox="0 0 1440 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-full h-full opacity-35" viewBox="0 0 1440 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="cartoGrid" width="100" height="100" patternUnits="userSpaceOnUse">
-                <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#10B981" strokeWidth="0.4" strokeDasharray="3 6" opacity="0.4" />
-                <circle cx="50" cy="50" r="1.5" fill="#34D399" opacity="0.5" />
+                <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#059669" strokeWidth="0.4" strokeDasharray="3 6" opacity="0.3" />
+                <circle cx="50" cy="50" r="1.5" fill="#059669" opacity="0.4" />
               </pattern>
             </defs>
             
             <rect width="100%" height="100%" fill="url(#cartoGrid)" />
 
-            <g fill="none" stroke="#34D399" opacity="0.6">
+            <g fill="none" stroke="#059669" opacity="0.5">
               <path d="M -100 180 C 250 80, 450 320, 850 140 C 1100 50, 1300 240, 1600 120" strokeWidth="1.2" />
               <path d="M -100 220 C 250 120, 450 360, 850 180 C 1100 90, 1300 280, 1600 160" strokeWidth="0.8" opacity="0.7" />
               <path d="M -100 260 C 250 160, 450 400, 850 220 C 1100 130, 1300 320, 1600 200" strokeWidth="0.6" opacity="0.5" />
               
-              <path d="M -50 420 Q 350 220 750 380 T 1550 310" stroke="#10B981" strokeWidth="1.4" />
-              <path d="M -50 460 Q 350 260 750 420 T 1550 350" stroke="#10B981" strokeWidth="0.8" opacity="0.6" />
-              <path d="M -50 500 Q 350 300 750 460 T 1550 390" stroke="#10B981" strokeWidth="0.5" opacity="0.4" />
+              <path d="M -50 420 Q 350 220 750 380 T 1550 310" stroke="#059669" strokeWidth="1.4" />
+              <path d="M -50 460 Q 350 260 750 420 T 1550 350" stroke="#059669" strokeWidth="0.8" opacity="0.6" />
+              <path d="M -50 500 Q 350 300 750 460 T 1550 390" stroke="#059669" strokeWidth="0.5" opacity="0.4" />
             </g>
 
             <path 
               d="M 180 520 Q 420 280 720 340 T 1280 200" 
               fill="none" 
-              stroke="#F59E0B" 
+              stroke="#D97706" 
               strokeWidth="2" 
               strokeDasharray="6 6" 
               opacity="0.7"
@@ -348,7 +347,7 @@ export default function DestinationsPage() {
             <path 
               d="M 320 240 Q 600 180 940 260" 
               fill="none" 
-              stroke="#10B981" 
+              stroke="#059669" 
               strokeWidth="1.8" 
               strokeDasharray="4 4" 
               opacity="0.6"
@@ -357,9 +356,9 @@ export default function DestinationsPage() {
         </div>
 
         {/* GPS COORDINATES & COMPASS NAV DETAIL */}
-        <div className="absolute top-28 left-6 text-[10px] font-mono text-emerald-400/70 tracking-widest pointer-events-none hidden sm:flex items-center gap-3">
-          <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 font-bold">
-            <Compass className="w-3 h-3 text-emerald-400 animate-spin-slow" /> 32°14′N 77°11′E
+        <div className="absolute top-28 left-6 text-[10px] font-mono text-slate-500 tracking-widest pointer-events-none hidden sm:flex items-center gap-3">
+          <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/90 border border-slate-200 text-emerald-800 font-bold shadow-sm">
+            <Compass className="w-3 h-3 text-emerald-600 animate-spin-slow" /> 32°14′N 77°11′E
           </span>
           <span>ELEVATION: 340m — 4,300m</span>
           <span>•</span>
@@ -373,29 +372,29 @@ export default function DestinationsPage() {
             <div className="lg:col-span-7 text-left space-y-6">
               
               {/* EXPLORATION BADGE */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-white text-xs font-medium shadow-xl backdrop-blur-md">
-                <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 font-bold text-[11px] uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200 text-slate-900 text-xs font-medium shadow-md backdrop-blur-md">
+                <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-bold text-[11px] uppercase tracking-wider shadow-sm">
                   <Compass className="w-3.5 h-3.5" /> EXPEDITION MAP
                 </span>
-                <span className="text-emerald-300 font-mono text-[11px] font-semibold flex items-center gap-1.5 px-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-emerald-800 font-mono text-[11px] font-semibold flex items-center gap-1.5 px-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
                   16+ Basecamps Mapped
                 </span>
               </div>
 
               {/* MAIN EXPEDITION DISCOVERY HEADING */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.12] tracking-tight uppercase font-heading drop-shadow-lg">
-                DISCOVER YOUR NEXT <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">DESTINATION</span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.12] tracking-tight uppercase font-heading">
+                DISCOVER YOUR NEXT <span className="text-emerald-700">DESTINATION</span>
               </h1>
 
               {/* EXPEDITION DESCRIPTION */}
-              <p className="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed font-normal">
+              <p className="text-slate-600 text-sm sm:text-base max-w-xl leading-relaxed font-medium">
                 Unfold the Himalayan cartography. Explore high-altitude desert circuits, pine-forested river havens, ancient monastic villages, and sacred mountain summits across Himachal Pradesh, Uttarakhand, and Ladakh.
               </p>
 
               {/* PROMINENT EXPEDITION SEARCH BAR WIDGET */}
               <div className="pt-1 max-w-xl">
-                <div className="relative flex items-center bg-white/95 backdrop-blur-xl rounded-2xl p-2 shadow-2xl border border-emerald-500/30 ring-1 ring-emerald-500/20">
+                <div className="relative flex items-center bg-white rounded-2xl p-2 shadow-xl border border-slate-200/90 ring-1 ring-emerald-500/10">
                   <Search className="w-5 h-5 text-emerald-600 ml-3.5 shrink-0 pointer-events-none" />
                   <input 
                     type="text"
@@ -422,8 +421,8 @@ export default function DestinationsPage() {
               {/* INTERACTIVE QUICK DESTINATION SELECTOR CHIPS */}
               <div className="pt-2">
                 <div className="flex items-center gap-1.5 mb-2.5">
-                  <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-[11px] font-mono text-emerald-400 uppercase tracking-wider font-bold">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="text-[11px] font-mono text-slate-600 uppercase tracking-wider font-bold">
                     Quick Location Pins:
                   </span>
                 </div>
@@ -437,11 +436,11 @@ export default function DestinationsPage() {
                         onClick={() => setSearchQuery(isSelected ? '' : pin.query)}
                         className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1.5 shadow-sm border ${
                           isSelected 
-                            ? 'bg-emerald-500 text-slate-950 font-bold border-emerald-300 ring-2 ring-emerald-400/40 scale-105' 
-                            : 'bg-slate-900/80 hover:bg-slate-800 text-slate-200 border-slate-700/80 hover:border-emerald-500/50 backdrop-blur-md'
+                            ? 'bg-emerald-600 text-white font-bold border-emerald-500 ring-2 ring-emerald-400/40 scale-105' 
+                            : 'bg-white hover:bg-slate-100 text-slate-700 border-slate-200 hover:border-emerald-400'
                         }`}
                       >
-                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-slate-950' : 'bg-emerald-400'}`}></span>
+                        <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-emerald-600'}`}></span>
                         <span>{pin.name}</span>
                         <span className="text-[10px] opacity-70 font-mono">({pin.alt})</span>
                       </button>
@@ -477,10 +476,10 @@ export default function DestinationsPage() {
                     <div
                       key={card.name}
                       onClick={() => setSearchQuery(isSelected ? '' : card.query)}
-                      className={`cursor-pointer rounded-2xl p-2.5 bg-slate-900/90 border transition-all duration-300 backdrop-blur-xl shadow-2xl group hover:-translate-y-1.5 ${
+                      className={`cursor-pointer rounded-2xl p-2.5 bg-white border transition-all duration-300 backdrop-blur-xl shadow-xl group hover:-translate-y-1.5 ${
                         isSelected 
-                          ? 'border-emerald-400 ring-2 ring-emerald-400/50 bg-slate-900 scale-105' 
-                          : 'border-slate-800 hover:border-emerald-500/50 hover:bg-slate-900/95'
+                          ? 'border-emerald-600 ring-2 ring-emerald-500/40 bg-emerald-50/30 scale-105' 
+                          : 'border-slate-200/90 hover:border-emerald-500/60 hover:shadow-2xl'
                       } ${idx % 2 === 0 ? '-rotate-1' : 'rotate-1'}`}
                     >
                       {/* REAL DESTINATION PHOTO PREVIEW */}
@@ -490,25 +489,25 @@ export default function DestinationsPage() {
                           alt={card.name} 
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
                         
                         {/* ELEVATION BADGE */}
-                        <div className="absolute top-2 left-2 px-2 py-0.5 bg-slate-950/80 backdrop-blur-md text-emerald-400 text-[10px] font-mono font-bold rounded-md border border-emerald-500/30 flex items-center gap-1">
-                          <MapPin className="w-2.5 h-2.5 text-emerald-400" /> {card.alt}
+                        <div className="absolute top-2 left-2 px-2 py-0.5 bg-white/90 backdrop-blur-md text-emerald-800 text-[10px] font-mono font-bold rounded-md border border-slate-200 shadow-sm flex items-center gap-1">
+                          <MapPin className="w-2.5 h-2.5 text-emerald-600" /> {card.alt}
                         </div>
 
                         {/* PIN RIPPLE */}
                         <div className="absolute bottom-2 right-2 flex items-center justify-center">
-                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse"></span>
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] animate-pulse"></span>
                         </div>
                       </div>
 
                       {/* CARD DETAILS */}
                       <div className="px-1 space-y-0.5 text-left">
-                        <span className="text-[9px] font-mono uppercase tracking-wider text-emerald-400 block font-bold">
+                        <span className="text-[9px] font-mono uppercase tracking-wider text-emerald-700 block font-bold">
                           {card.badge}
                         </span>
-                        <h4 className="text-xs font-bold text-white group-hover:text-emerald-300 transition-colors truncate">
+                        <h4 className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 transition-colors truncate">
                           {card.name}
                         </h4>
                       </div>

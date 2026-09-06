@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { 
   Compass, Calendar, Mountain, MapPin, Car, ShieldCheck, HeartHandshake, 
   Utensils, CheckCircle2, ArrowRight, Navigation, Crosshair, Sparkles, 
-  Clock, Thermometer, Bus, Plane, Coffee, Home, Route, Check, Star, Wind
+  Clock, Thermometer, Bus, Plane, Coffee, Home, Route, Check, Star, Wind, Grid
 } from 'lucide-react';
 
 interface Attraction {
@@ -21,6 +21,12 @@ interface DayPlan {
   desc: string;
 }
 
+interface GalleryPhoto {
+  title: string;
+  img: string;
+  tag: string;
+}
+
 interface DestinationData {
   slug: string;
   name: string;
@@ -32,6 +38,8 @@ interface DestinationData {
   temp: string;
   nearestHub: string;
   heroImg: string;
+  gallery: GalleryPhoto[];
+  circuit?: string[];
   overview: string;
   attractions: Attraction[];
   treks: { name: string; duration: string; diff: string; link: string }[];
@@ -51,7 +59,14 @@ const DESTINATIONS: Record<string, DestinationData> = {
     idealDuration: '3 to 5 Days',
     temp: '-5°C to 24°C',
     nearestHub: 'Bhuntar Airport (50 km) / Chandigarh (290 km)',
-    heroImg: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Solang Valley Paragliding & Snow Peaks', img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80', tag: '🪂 Solang Valley' },
+      { title: 'Old Manali Cobblestone Cafes & Vibe', img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80', tag: '☕ Old Manali' },
+      { title: 'Atal Tunnel Sissu Waterfall Drive', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', tag: '🚗 Atal Tunnel' },
+      { title: 'Jogini Waterfalls & Beas River Pine Trail', img: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=800&q=80', tag: '🥾 Jogini Waterfalls' }
+    ],
+    circuit: ['Basecamp', 'Old Manali', 'Solang Valley', 'Atal Tunnel'],
     overview: 'Nestled on the banks of the Beas River, Manali is India’s premier Himalayan adventure hub. From the laid-back cafes of Old Manali to high-altitude pass crossings like Rohtang & Atal Tunnel into Lahaul, Manali offers the perfect mix of backpacker culture, pine forest trails, and thrill sports.',
     attractions: [
       { title: 'Old Manali Culture Walk', desc: 'Cobblestone alleyways, traditional wooden Pahadi houses, vibrant cafes, and the ancient Manu Temple.', icon: '🏔️', tag: 'Culture & Cafes' },
@@ -92,7 +107,14 @@ const DESTINATIONS: Record<string, DestinationData> = {
     idealDuration: '6 to 9 Days',
     temp: '-20°C to 15°C',
     nearestHub: 'Shimla (415 km) / Manali (200 km)',
-    heroImg: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Key Monastery Ki Gompa (4,166m)', img: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=1200&q=80', tag: '🛕 Key Monastery' },
+      { title: 'Chandratal Crescent Moon Lake', img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80', tag: '🌊 Chandratal Lake' },
+      { title: 'Hikkim Highest Post Office (4,400m)', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', tag: '📬 Hikkim Post' },
+      { title: 'Langza Fossil Village & Buddha Statue', img: 'https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=800&q=80', tag: '🗿 Langza Fossils' }
+    ],
+    circuit: ['Shimla/Kalpa', 'Kaza Town', 'Key Monastery', 'Chandratal Lake'],
     overview: 'Spiti Valley is a high-altitude cold mountain desert characterized by stark lunar landscapes, thousand-year-old Tibetan monasteries perched on cliffs, turquoise alpine lakes like Chandratal, and the highest inhabited villages in the world.',
     attractions: [
       { title: 'Key Monastery (Ki Gompa)', desc: 'Iconic 1,000-year-old Tibetan Buddhist monastery resting atop a conical hill at 4,166m.', icon: '🛕', tag: 'Spiritual Heritage' },
@@ -131,7 +153,14 @@ const DESTINATIONS: Record<string, DestinationData> = {
     idealDuration: '3 to 5 Days',
     temp: '2°C to 28°C',
     nearestHub: 'Bhuntar Airport (31 km) / Chandigarh (275 km)',
-    heroImg: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Parvati River Gushing Stream', img: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=1200&q=80', tag: '🌊 Parvati River' },
+      { title: 'Tosh Village & Glacier View', img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80', tag: '🏔️ Tosh Village' },
+      { title: 'Kheerganga Hot Springs Summit', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', tag: '♨️ Hot Springs' },
+      { title: 'Chalal Riverside Pine Trail', img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80', tag: '🌲 Chalal Trail' }
+    ],
+    circuit: ['Kasol Market', 'Chalal Village', 'Tosh Valley', 'Kheerganga Peak'],
     overview: 'Kasol is a magical hamlet tucked in the pine-scented Parvati Valley. Famous for its bohemian cafe culture, gushing turquoise Parvati river, Israeli delicacies, and gateway access to offbeat mountain villages like Tosh, Chalal, and Kheerganga.',
     attractions: [
       { title: 'Tosh Village & Waterfall Walk', desc: 'Quaint wooden village offering magnificent views of Tosh Glacier and snow-capped peaks.', icon: '🏔️', tag: 'Alpine Village' },
@@ -170,7 +199,14 @@ const DESTINATIONS: Record<string, DestinationData> = {
     idealDuration: '2 to 4 Days',
     temp: '8°C to 35°C',
     nearestHub: 'Jolly Grant Dehradun Airport (20 km) / Haridwar Station (25 km)',
-    heroImg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Ganges White Water Rafting', img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80', tag: '🌊 Rafting Thrill' },
+      { title: 'The Beatles Ashram Graffiti Art', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', tag: '🎨 Beatles Ashram' },
+      { title: 'Triveni Ghat Ganga Aarti', img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80', tag: '🛕 Ganga Aarti' },
+      { title: 'Shivpuri Riverside Beach Camping', img: 'https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=800&q=80', tag: '⛺ Beach Camps' }
+    ],
+    circuit: ['Tapovan Base', 'Laxman Jhula', 'Shivpuri Rapid', 'Triveni Ghat'],
     overview: 'Rishikesh is the vibrant gateway to the Garhwal Himalayas where the holy Ganges river flows out of the mountains. Renowned globally for white-water rafting, bungee jumping, riverside camping, Beatles ashram, and spiritual Ganga Aarti.',
     attractions: [
       { title: 'White Water Rafting & Cliff Jumping', desc: 'Tackle Grade III & IV rapids (Golf Course, Roller Coaster) from Shivpuri down to Laxman Jhula.', icon: '🌊', tag: 'Thrill Sport' },
@@ -207,7 +243,14 @@ const DESTINATIONS: Record<string, DestinationData> = {
     idealDuration: '3 to 4 Days',
     temp: '-5°C to 20°C',
     nearestHub: 'Dehradun Airport (225 km) / Haridwar Station (230 km)',
-    heroImg: 'https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Tungnath Highest Shiva Temple (3,680m)', img: 'https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=1200&q=80', tag: '🛕 Tungnath Temple' },
+      { title: 'Chandrashila 4,000m Summit View', img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80', tag: '🏔️ 4,000m Peak' },
+      { title: 'Deoriatal Alpine Reflection Lake', img: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=800&q=80', tag: '🌊 Deoriatal Lake' },
+      { title: 'Chopta Bugyal Alpine Meadows', img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80', tag: '🏕️ Alpine Meadows' }
+    ],
+    circuit: ['Sari Basecamp', 'Deoriatal Lake', 'Chopta Meadows', 'Tungnath Peak'],
     overview: 'Chopta is an unspoiled alpine meadow in the Kedarnath Wildlife Sanctuary. It serves as the base camp for the trek to Tungnath—the world’s highest Shiva temple at 3,680m—and the Chandrashila summit (4,000m) offering 360-degree views of Nanda Devi, Trishul, and Chaukhamba peaks.',
     attractions: [
       { title: 'Tungnath Shiva Temple (3,680m)', desc: '1,000-year-old ancient stone temple, highest Panch Kedar shrine nestled amidst alpine ridges.', icon: '🛕', tag: 'World Highest Shiva Temple' },
@@ -245,7 +288,14 @@ const DESTINATIONS: Record<string, DestinationData> = {
     idealDuration: '2 to 3 Days',
     temp: '5°C to 26°C',
     nearestHub: 'Gaggal Kangra Airport (67 km) / Pathankot Railway Station (140 km)',
-    heroImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Billing Launchpad Paragliding Flight', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', tag: '🪂 Paragliding' },
+      { title: 'Chokling Monastery Stupa', img: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=800&q=80', tag: '🛕 Tibetan Stupa' },
+      { title: 'Bir Tea Garden Sunset Cycling', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80', tag: '🚲 Tea Gardens' },
+      { title: 'Rajgundha Valley Forest Hike', img: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=800&q=80', tag: '🥾 Rajgundha Trail' }
+    ],
+    circuit: ['Bir Chougan', 'Tea Gardens', 'Billing Takeoff', 'Landing Ground'],
     overview: 'Bir Billing is world-renowned as the paragliding capital of Asia. Billing serves as the high-altitude takeoff site at 2,400m while Bir is the gentle landing ground surrounded by Tibetan monasteries, organic tea gardens, and sunset cafes.',
     attractions: [
       { title: 'Tandem Paragliding Flight (Billing to Bir)', desc: 'Glide 15-30 minutes through thermals with experienced pilot from 2,400m down to Bir landing ground.', icon: '🪂', tag: 'World Class Paragliding' },
@@ -287,7 +337,13 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
     idealDuration: '3 to 5 Days',
     temp: '0°C to 22°C',
     nearestHub: 'Chandigarh / Dehradun',
-    heroImg: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=80',
+    heroImg: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2400&q=80',
+    gallery: [
+      { title: 'Alpine Valley View', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80', tag: '🏔️ Valley View' },
+      { title: 'Pahadi Village & Culture', img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80', tag: '🏡 Local Vibe' },
+      { title: 'High Mountain Pass Crossing', img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80', tag: '🚗 Pass Crossing' },
+      { title: 'Pine Forest & Waterfall Trail', img: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=800&q=80', tag: '🥾 Forest Trail' }
+    ],
     overview: `Explore ${rawSlug.replace(/-/g, ' ')} with Pahadi Bagpackers. Experience alpine mountain views, serene pine valleys, ancient local heritage, and thrilling adventure options.`,
     attractions: [
       { title: 'Scenic Valley Sightseeing', desc: 'Panoramic mountain viewpoints, alpine rivers, and pine forest trails.', icon: '🏔️', tag: 'Sightseeing' },
@@ -312,174 +368,222 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
   };
 
   return (
-    <div className="bg-[#F8FAF9] min-h-screen text-slate-900 font-sans">
+    <div className="bg-[#FAFBFB] min-h-screen text-slate-900 font-sans">
       
-      {/* HERO SECTION — CARTOGRAPHIC EXPEDITION CANVAS (EXTENDS TO TOP 0 UNDER HEADER) */}
-      <section className="relative bg-[#09111E] text-white pt-32 sm:pt-40 lg:pt-44 pb-16 sm:pb-24 overflow-hidden border-b border-slate-800 shadow-2xl">
-        {/* SVG Elevation Contour Lines & Vector Grid Background */}
-        <div className="absolute inset-0 pointer-events-none opacity-20">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid-pattern-dest" width="60" height="60" patternUnits="userSpaceOnUse">
-                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid-pattern-dest)" />
-            <path d="M-100,200 Q300,50 700,250 T1500,100 T2100,400" fill="none" stroke="rgba(16,185,129,0.3)" strokeWidth="1.5" strokeDasharray="6,6" />
-            <path d="M-200,450 Q400,200 900,480 T1700,300" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
-            <circle cx="85%" cy="35%" r="220" fill="none" stroke="rgba(16,185,129,0.12)" strokeWidth="1" />
-            <circle cx="85%" cy="35%" r="140" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
-          </svg>
+      {/* 🏞️ FULL-SCREEN MULTI-PHOTO ATTRACTION COLLAGE HERO SECTION (100% FULL BLEED EDGE-TO-EDGE) */}
+      <section className="relative w-full min-h-[90vh] lg:min-h-[92vh] pt-28 sm:pt-36 pb-10 flex flex-col justify-between overflow-hidden mb-12 border-b border-slate-200">
+        
+        {/* FULL SCREEN MULTI-PHOTO COLLAGE GRID CANVAS (COVERS 100% VIEWPORT WIDTH AND HEIGHT) */}
+        <div className="absolute inset-0 w-full h-full grid grid-cols-2 md:grid-cols-4 gap-1 bg-slate-950 z-0">
+          
+          {/* COLLAGE CELL 1 — MAIN FEATURED ATTRACTION */}
+          <div className="relative col-span-2 row-span-2 overflow-hidden group/cell">
+            <img 
+              src={dest.gallery?.[0]?.img || dest.heroImg} 
+              alt={dest.gallery?.[0]?.title || dest.name}
+              className="w-full h-full object-cover object-center group-hover/cell:scale-105 transition-transform duration-700 brightness-[0.92]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-medium text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 shadow-lg">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              {dest.gallery?.[0]?.tag || '🪂 Solang Valley'}
+            </div>
+          </div>
+
+          {/* COLLAGE CELL 2 — OLD MANALI CAFES & VILLAGE */}
+          <div className="relative overflow-hidden group/cell">
+            <img 
+              src={dest.gallery?.[1]?.img || 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80'} 
+              alt={dest.gallery?.[1]?.title || 'Old Manali'}
+              className="w-full h-full object-cover object-center group-hover/cell:scale-105 transition-transform duration-700 brightness-[0.92]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white border border-white/20">
+              {dest.gallery?.[1]?.tag || '☕ Old Manali'}
+            </div>
+          </div>
+
+          {/* COLLAGE CELL 3 — ATAL TUNNEL & SISSU WATERFALL */}
+          <div className="relative overflow-hidden group/cell">
+            <img 
+              src={dest.gallery?.[2]?.img || 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'} 
+              alt={dest.gallery?.[2]?.title || 'Atal Tunnel'}
+              className="w-full h-full object-cover object-center group-hover/cell:scale-105 transition-transform duration-700 brightness-[0.92]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white border border-white/20">
+              {dest.gallery?.[2]?.tag || '🚗 Atal Tunnel'}
+            </div>
+          </div>
+
+          {/* COLLAGE CELL 4 — JOGINI WATERFALLS & BEAS RIVER TRAIL */}
+          <div className="relative col-span-2 md:col-span-2 overflow-hidden group/cell">
+            <img 
+              src={dest.gallery?.[3]?.img || 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=800&q=80'} 
+              alt={dest.gallery?.[3]?.title || 'Jogini Falls'}
+              className="w-full h-full object-cover object-center group-hover/cell:scale-105 transition-transform duration-700 brightness-[0.92]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white border border-white/20">
+              {dest.gallery?.[3]?.tag || '🥾 Waterfalls & Forest'}
+            </div>
+          </div>
+
         </div>
 
-        {/* Ambient Gradient Glows */}
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 right-10 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        {/* GRADIENT OVERLAYS FOR HIGH CONTRAST & ELEGANT FULL-BLEED BLEND */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/30 pointer-events-none z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-transparent to-slate-950/40 pointer-events-none z-10"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* INNER CONTENT CONTAINER (CENTERED WITHIN 100% FULL BLEED HERO) */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 w-full flex-1 flex flex-col justify-between gap-8">
           
-          {/* BREADCRUMB NAV */}
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6 uppercase tracking-wider">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/destinations" className="hover:text-emerald-400 transition-colors">Destinations</Link>
-            <span>/</span>
-            <span className="text-emerald-400 font-bold">{dest.name}</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* TOP BREADCRUMB & EMBLEM BAR */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
             
-            {/* LEFT EXPEDITION DETAILS */}
-            <div className="lg:col-span-7 space-y-6">
-              
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="px-3.5 py-1 bg-emerald-600/90 text-white text-[11px] font-mono font-bold uppercase rounded-full tracking-wider shadow-md backdrop-blur-sm border border-emerald-400/30">
-                  📌 {dest.state}
-                </span>
-                <span className="px-3.5 py-1 bg-slate-800/80 backdrop-blur-md text-emerald-300 text-[11px] font-mono font-semibold rounded-full border border-slate-700/80 flex items-center gap-1.5">
-                  <Crosshair className="w-3.5 h-3.5 text-emerald-400" /> {dest.altitude}
-                </span>
-              </div>
-
-              <div>
-                <span className="text-xs sm:text-sm font-mono text-emerald-400 font-bold uppercase tracking-widest block mb-2">
-                  {dest.subtitle}
-                </span>
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white uppercase font-heading tracking-tight leading-none drop-shadow-lg">
-                  {dest.name}
-                </h1>
-              </div>
-
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
-                {dest.overview}
-              </p>
-
-              {/* HERO METRICS TICKER GRID */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
-                    <Calendar className="w-3 h-3" /> Best Season
-                  </span>
-                  <span className="text-xs font-bold text-white block truncate">{dest.bestTime}</span>
-                </div>
-
-                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
-                    <Clock className="w-3 h-3" /> Ideal Stay
-                  </span>
-                  <span className="text-xs font-bold text-white block truncate">{dest.idealDuration}</span>
-                </div>
-
-                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
-                    <Thermometer className="w-3 h-3" /> Weather
-                  </span>
-                  <span className="text-xs font-bold text-white block truncate">{dest.temp}</span>
-                </div>
-
-                <div className="bg-slate-900/80 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-sm">
-                  <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold block mb-0.5 flex items-center gap-1">
-                    <MapPin className="w-3 h-3" /> Nearest Hub
-                  </span>
-                  <span className="text-xs font-bold text-white block truncate">{dest.nearestHub}</span>
-                </div>
-              </div>
-
-              {/* CTA BUTTONS */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <Link 
-                  href={`/itinerary-planner?destination=${dest.slug}`}
-                  className="px-6 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg hover:shadow-emerald-900/50 flex items-center gap-2"
-                >
-                  Plan Custom {dest.name} Trip <Sparkles className="w-4 h-4" />
-                </Link>
-                <Link 
-                  href={`/taxi?destination=${dest.slug}`}
-                  className="px-5 py-3.5 bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all border border-slate-700 flex items-center gap-2"
-                >
-                  🚕 Book Cab <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
+            {/* MINIMAL BREADCRUMB */}
+            <div className="flex items-center gap-2 text-xs font-medium text-white/90 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-md">
+              <Link href="/" className="hover:text-emerald-300 transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/destinations" className="hover:text-emerald-300 transition-colors">Destinations</Link>
+              <span>/</span>
+              <span className="text-emerald-400 font-semibold">{dest.name}</span>
             </div>
 
-            {/* RIGHT POLAROID HERO IMAGE CARD */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/80 group">
-                <img 
-                  src={dest.heroImg} 
-                  alt={dest.name} 
-                  className="w-full h-80 sm:h-[420px] object-cover object-center group-hover:scale-105 transition-transform duration-700" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#09111E] via-transparent to-black/20"></div>
-
-                {/* TOP RIGHT CORNER EMBLEM */}
-                <div className="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-700 text-[11px] font-mono font-bold text-emerald-300 flex items-center gap-1.5 shadow-lg">
-                  <Navigation className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
-                  HIMALAYAN DESTINATION
-                </div>
-
-                {/* BOTTOM FLOATING INFO BADGE */}
-                <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 p-4 rounded-2xl flex items-center justify-between gap-4 shadow-xl">
-                  <div>
-                    <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase block">EXPEDITION BASECAMP</span>
-                    <span className="text-sm font-extrabold text-white uppercase">{dest.name} Region</span>
-                  </div>
-                  <span className="px-3 py-1 bg-emerald-600 text-white font-mono text-xs font-bold rounded-lg shrink-0">
-                    Verified Route
-                  </span>
-                </div>
-              </div>
+            {/* LOCATION & MULTI-PHOTO COLLAGE BADGE */}
+            <div className="flex items-center gap-2">
+              <span className="px-4 py-1.5 bg-emerald-600/90 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-wider rounded-full shadow-md border border-emerald-400/30 flex items-center gap-1.5">
+                📍 {dest.state.toUpperCase()} • {dest.altitude}
+              </span>
+              <span className="px-3.5 py-1.5 bg-white/15 backdrop-blur-md text-white text-xs font-medium rounded-full border border-white/20 hidden sm:flex items-center gap-1.5">
+                <Grid className="w-3.5 h-3.5 text-emerald-300" /> Attraction Gallery
+              </span>
             </div>
 
           </div>
+
+          {/* HERO DESTINATION TITLE & METRICS OVERLAY */}
+          <div className="space-y-3 my-auto pt-6 pb-2">
+            
+            <div>
+              <span className="text-xs sm:text-sm font-semibold text-emerald-300 uppercase tracking-widest block mb-2 drop-shadow-sm">
+                {dest.subtitle}
+              </span>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-tight drop-shadow-lg">
+                {dest.name}
+              </h1>
+            </div>
+
+            {/* INLINE DESTINATION FACTS TICKER BAR */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs sm:text-sm font-medium text-white/90">
+              <span className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/20 flex items-center gap-2 shadow-md">
+                🗓️ Best Season: <span className="text-white font-semibold">{dest.bestTime}</span>
+              </span>
+              <span className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/20 flex items-center gap-2 shadow-md">
+                ⏱️ Ideal Stay: <span className="text-white font-semibold">{dest.idealDuration}</span>
+              </span>
+              <span className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/20 flex items-center gap-2 shadow-md">
+                🌡️ Weather: <span className="text-white font-semibold">{dest.temp}</span>
+              </span>
+              <span className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/20 hidden md:flex items-center gap-2 shadow-md">
+                🚉 Transit: <span className="text-white font-semibold">{dest.nearestHub}</span>
+              </span>
+            </div>
+
+          </div>
+
+          {/* HERO ACTION BAR & EXPEDITION ROUTE TRAIL (FLOATING GLASSMorphism BAR) */}
+          <div className="bg-white/95 backdrop-blur-xl border border-white/40 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            {/* ACTION BUTTONS */}
+            <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+              <Link 
+                href={`/itinerary-planner?destination=${dest.slug}`}
+                className="flex-1 sm:flex-initial px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-emerald-700/20 flex items-center justify-center gap-2 hover:scale-[1.02]"
+              >
+                Plan Your {dest.name} Trip ✨
+              </Link>
+              <Link 
+                href={`#why-visit-${dest.slug}`}
+                className="flex-1 sm:flex-initial px-6 py-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs uppercase tracking-wider rounded-xl transition-all border border-slate-300 flex items-center justify-center gap-2"
+              >
+                Explore Experiences 🌿
+              </Link>
+            </div>
+
+            {/* SUBTLE EXPEDITION ROUTE TRAIL */}
+            <div className="text-xs font-sans text-slate-600 flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0">
+              <Route className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span className="font-bold text-slate-700 shrink-0">Circuit Trail:</span>
+              {(dest.circuit || ['Basecamp', `${dest.name} Town`, 'Sightseeing', 'Top Viewpoint']).map((step, idx, arr) => (
+                <React.Fragment key={idx}>
+                  <span className={idx === arr.length - 1 
+                    ? "bg-emerald-50 text-emerald-800 font-bold px-2.5 py-1 rounded-md border border-emerald-200 shrink-0" 
+                    : "bg-slate-100 px-2.5 py-1 rounded-md text-slate-800 font-semibold shrink-0"}>
+                    {step}
+                  </span>
+                  {idx < arr.length - 1 && <span className="text-slate-400 font-bold">&rarr;</span>}
+                </React.Fragment>
+              ))}
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* 📖 EDITORIAL SECTION: "WHY VISIT MANALI?" STORYTELLING GUIDE */}
+      <section id={`why-visit-${dest.slug}`} className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
+        <div className="bg-white border border-slate-200/80 rounded-3xl p-8 sm:p-12 shadow-sm space-y-8">
+          
+          <div className="border-b border-slate-100 pb-6">
+            <span className="text-xs font-mono font-bold text-emerald-700 uppercase tracking-widest block mb-1">
+              PAHADI TRAVEL GUIDE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 uppercase font-heading">
+              Why Visit {dest.name}?
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed max-w-3xl">
+              {dest.overview}
+            </p>
+          </div>
+
+          {/* 4 FEATURED EDITORIAL EXPERIENCE CARDS WITH IMAGES */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {dest.gallery.map((g, idx) => (
+              <div key={idx} className="bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden shadow-xs hover:border-emerald-500 hover:shadow-md transition-all group">
+                <div className="h-36 overflow-hidden relative">
+                  <img src={g.img} alt={g.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute top-2 left-2 px-2.5 py-0.5 bg-black/60 backdrop-blur-md text-emerald-300 font-mono text-[10px] font-bold rounded-full border border-emerald-400/30">
+                    {g.tag}
+                  </div>
+                </div>
+                <div className="p-4 space-y-1.5">
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-emerald-700 transition-colors">{g.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    {idx === 0 && 'High altitude paragliding, snow slopes, and Atal tunnel gateway.'}
+                    {idx === 1 && 'Cobblestone lanes, wooden cafes, Manu Temple & river acoustic music.'}
+                    {idx === 2 && 'Traverse 9.02 km tunnel into Lahaul valley & Sissu waterfall.'}
+                    {idx === 3 && 'Pine-scented forest trail leading to Jogini falls & sulphur hot springs.'}
+                  </p>
+                </div>
+              </div>
+            ))}
+
+          </div>
+
         </div>
       </section>
 
-      {/* MAIN LAYOUT WITH SIDEBAR */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      {/* MAIN CONTENT LAYOUT WITH SIDEBAR */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
 
           {/* LEFT CONTENT COLUMN */}
           <div className="lg:col-span-8 space-y-12">
             
-            {/* OVERVIEW */}
-            <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-sm space-y-4">
-              <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading flex items-center gap-2">
-                <Compass className="w-6 h-6 text-emerald-600" /> About {dest.name}
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                {dest.overview}
-              </p>
-
-              <div className="bg-emerald-50/80 border border-emerald-200/80 p-4 rounded-2xl flex items-start gap-3 mt-4">
-                <Sparkles className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <p className="text-xs text-emerald-900 font-medium leading-relaxed">
-                  <strong>Pahadi Local Insight:</strong> Always carry light layers even in summer months. Mountain weather changes quickly, and local mountain guides will ensure smooth travel across high-altitude passes.
-                </p>
-              </div>
-            </section>
-
             {/* KEY ATTRACTIONS */}
             <section className="space-y-6">
               <div className="flex items-center justify-between">
@@ -490,7 +594,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {dest.attractions.map((att, idx) => (
-                  <div key={idx} className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-sm hover:border-emerald-500 hover:shadow-md transition-all flex flex-col justify-between group">
+                  <div key={idx} className="bg-white border border-slate-200/80 p-5 rounded-2xl shadow-xs hover:border-emerald-500 hover:shadow-md transition-all flex flex-col justify-between group">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-3">
                         <span className="text-2xl">{att.icon}</span>
@@ -508,7 +612,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
 
             {/* RECOMMENDED TREKS NEARBY */}
             {dest.treks && dest.treks.length > 0 && (
-              <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
+              <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
                 <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading flex items-center gap-2">
                   🥾 Recommended Treks Around {dest.name}
                 </h2>
@@ -530,7 +634,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
             )}
 
             {/* HOW TO REACH */}
-            <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
+            <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
               <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading flex items-center gap-2">
                 <Car className="w-6 h-6 text-emerald-600" /> How to Reach {dest.name}
               </h2>
@@ -550,7 +654,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
             {/* LOCAL FOOD & STAY VIBE */}
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {dest.foodAndStay.map((fs, idx) => (
-                <div key={idx} className="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-sm space-y-3">
+                <div key={idx} className="bg-white border border-slate-200/80 p-6 rounded-3xl shadow-xs space-y-3">
                   <span className="text-3xl block">{fs.icon}</span>
                   <h3 className="font-bold text-slate-900 text-lg">{fs.title}</h3>
                   <p className="text-xs text-slate-600 leading-relaxed">{fs.desc}</p>
@@ -559,7 +663,7 @@ export default function DestinationDetailPage({ params }: { params: { slug: stri
             </section>
 
             {/* SAMPLE DAY-BY-DAY ITINERARY */}
-            <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-sm space-y-6">
+            <section className="bg-white border border-slate-200/80 p-6 sm:p-8 rounded-3xl shadow-xs space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
                 <h2 className="text-2xl font-extrabold text-slate-900 uppercase font-heading">
                   🗺️ Sample {dest.name} Itinerary
