@@ -164,8 +164,8 @@ export default function Navbar() {
                         <div>
                           <h5 className="font-extrabold text-slate-400 uppercase tracking-wider mb-2.5 text-[10px] font-mono">FEATURED TRAILS</h5>
                           <Link href="/treks/hampta-pass" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Hampta Pass Crossover</Link>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Kedarkantha Snow Summit</Link>
-                          <Link href="/treks" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Har Ki Dun Valley Trek</Link>
+                          <Link href="/treks/kedarkantha" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Kedarkantha Snow Summit</Link>
+                          <Link href="/treks/har-ki-dun" onClick={() => setTreksDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 text-slate-800 hover:text-white font-bold transition-all">Har Ki Dun Valley Trek</Link>
                         </div>
                       </div>
                     </div>
