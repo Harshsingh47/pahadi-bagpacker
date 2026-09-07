@@ -365,8 +365,8 @@ function TrekCard({ trek, getWhatsAppUrl }: { trek: Trek; getWhatsAppUrl: (name:
         {/* PRICE & BUTTON FOOTER */}
         <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
           <div>
-            <span className="text-[9px] uppercase tracking-wider font-bold text-slate-400 block">Starting Price</span>
-            <span className="text-lg font-extrabold text-emerald-700">{trek.price}</span>
+            <span className="text-[9px] uppercase tracking-wider font-bold text-emerald-700 block">Price Quote</span>
+            <span className="text-xs font-extrabold text-slate-800">WhatsApp Direct</span>
           </div>
 
           <div className="flex items-center gap-2">

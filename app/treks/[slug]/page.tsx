@@ -22,12 +22,11 @@ export default function TrekDetailPage({ params }: { params: { slug: string } })
 
   const getWhatsAppUrl = () => {
     const text = encodeURIComponent(
-      `Hello Pahadi Bagpackers! 🏔️ I want to book the *${trek.name}* (${trek.state}):\n\n` +
+      `Hello Pahadi Bagpackers! 🏔️ I want to request the price & batch availability for *${trek.name}* (${trek.state}):\n\n` +
       `📍 *Starting Point:* ${trek.startingPoint}\n` +
       `⏱️ *Duration:* ${trek.duration}\n` +
-      `🏔️ *Max Altitude:* ${trek.altitude}\n` +
-      `💰 *Price:* ${trek.price} per trekker\n\n` +
-      `Please provide batch dates and booking process.`
+      `🏔️ *Max Altitude:* ${trek.altitude}\n\n` +
+      `Please provide the best package price and batch availability.`
     );
     return `https://wa.me/917018800958?text=${text}`;
   };
@@ -176,13 +175,10 @@ export default function TrekDetailPage({ params }: { params: { slug: string } })
             <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xl space-y-6 sticky top-28 text-left">
               
               <div className="border-b border-slate-100 pb-4">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">Starting Package Price</span>
-                <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-3xl font-extrabold text-emerald-700">{trek.price}</span>
-                  <span className="text-xs text-slate-500 font-medium">/ per trekker</span>
-                </div>
+                <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 block">Trek Package Quote</span>
+                <div className="text-xl font-extrabold text-slate-900 mt-1">Get Guaranteed Price</div>
                 <span className="text-[11px] text-slate-500 font-medium block mt-1">
-                  Includes Tents, Food, Mountaineering Guide & Permits
+                  Includes Tents, Meals, Mountaineering Leader & Permits
                 </span>
               </div>
 
