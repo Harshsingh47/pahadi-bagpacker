@@ -42,7 +42,7 @@ export default function Footer() {
             {/* QUICK SOCIAL PILLS */}
             <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <a
-                href="https://wa.me/919816012345"
+                href="https://wa.me/917018800958"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-emerald-950/80 hover:bg-emerald-600 border border-emerald-500/30 text-emerald-300 hover:text-white font-bold text-[11px] flex items-center gap-1.5 transition-all shadow-sm"
@@ -50,10 +50,16 @@ export default function Footer() {
                 <span>💬</span> WhatsApp Us
               </a>
               <a
-                href="tel:+919816012345"
+                href="tel:+917018800958"
                 className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-200 font-bold text-[11px] flex items-center gap-1.5 transition-all shadow-sm"
               >
-                <span>📞</span> +91 98160 12345
+                <span>📞</span> +91 70188 00958
+              </a>
+              <a
+                href="tel:01792359853"
+                className="px-4 py-2 rounded-full bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-slate-300 font-bold text-[11px] flex items-center gap-1.5 transition-all shadow-sm"
+              >
+                <span>☎️</span> Off.: 01792-359853
               </a>
             </div>
           </div>
@@ -91,29 +97,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* COLUMN 4: BASECAMPS & CONTACT */}
+          {/* COLUMN 4: HEAD OFFICE & BASECAMPS */}
           <div className="space-y-4">
             <h4 className="font-bold text-white uppercase tracking-wider text-xs flex items-center gap-2">
               <span className="w-1.5 h-3 bg-emerald-500 rounded-full"></span>
-              <span>BASECAMP HUBS</span>
+              <span>OFFICE & BASECAMPS</span>
             </h4>
 
             <div className="space-y-3 text-slate-400 text-xs font-light">
               <div className="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block font-mono">🌲 HIMACHAL BASECAMP</span>
-                <p className="text-white font-medium">Old Manali Basecamp</p>
-                <p className="text-[11px]">Near Club House Road, Himachal Pradesh 175131</p>
+                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block font-mono">📍 MAIN OFFICE (SOLAN)</span>
+                <p className="text-white font-medium">233 Bhaktora Colony</p>
+                <p className="text-[11px]">Hospital Road, Solan, HP - 173212</p>
               </div>
 
               <div className="p-3 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block font-mono">🌊 UTTARAKHAND BASECAMP</span>
-                <p className="text-white font-medium">Rishikesh Basecamp</p>
-                <p className="text-[11px]">Tapovan High Bank, Rishikesh 249192</p>
+                <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block font-mono">🌲 BASECAMPS</span>
+                <p className="text-white font-medium">Old Manali & Rishikesh Tapovan</p>
               </div>
 
-              <div className="pt-1 text-[11px]">
-                <p className="text-slate-300 font-semibold">✉️ Email: <span className="text-emerald-400 font-normal">basecamp@pahadibagpackers.com</span></p>
-                <p className="text-slate-300 font-semibold">🕒 Support: <span className="text-slate-400 font-normal">24/7 Backpacker Emergency Support</span></p>
+              <div className="pt-1 text-[11px] space-y-0.5">
+                <p className="text-slate-300 font-semibold">✉️ Email: <a href="mailto:pahadibagpackers77@gmail.com" className="text-emerald-400 font-normal hover:underline">pahadibagpackers77@gmail.com</a></p>
+                <p className="text-slate-300 font-semibold">📞 Mobile: <a href="tel:+917018800958" className="text-slate-200 font-normal hover:underline">+91 70188 00958</a></p>
+                <p className="text-slate-300 font-semibold">☎️ Landline: <a href="tel:01792359853" className="text-slate-200 font-normal hover:underline">01792-359853</a></p>
               </div>
             </div>
           </div>
@@ -123,13 +129,10 @@ export default function Footer() {
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
         <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
           <div className="flex flex-wrap items-center gap-3">
-            <p>© 2026 Pahadi Bagpackers Pvt. Ltd. All rights reserved.</p>
+            <p>© 2026 Pahadi Bagpackers. All rights reserved.</p>
             <span className="hidden md:inline text-slate-700">•</span>
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-mono">
-              🌲 Himachal Govt Registered
-            </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-teal-950 text-teal-400 border border-teal-800 text-[10px] font-mono">
-              🕉️ Uttarakhand Certified
+              📜 Regd. No.: 241224/48355
             </span>
           </div>
 

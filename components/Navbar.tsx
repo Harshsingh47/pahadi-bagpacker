@@ -30,23 +30,20 @@ export default function Navbar() {
       <header className="bg-slate-950 border-b border-slate-800 text-slate-300 text-[11px] py-2 px-6 hidden md:block relative z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6 font-mono">
-            <a href="tel:+919816012345" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-              <Phone className="w-3 h-3 text-emerald-400" /> +91 98160 12345
+            <a href="tel:+917018800958" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
+              <Phone className="w-3 h-3 text-emerald-400" /> +91 70188 00958
             </a>
-            <a href="mailto:info@pahadibagpackers.com" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-              <Mail className="w-3 h-3 text-emerald-400" /> info@pahadibagpackers.com
+            <a href="mailto:pahadibagpackers77@gmail.com" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
+              <Mail className="w-3 h-3 text-emerald-400" /> pahadibagpackers77@gmail.com
             </a>
             <span className="flex items-center gap-1.5 text-slate-400">
-              <MapPin className="w-3 h-3 text-emerald-400" /> Basecamps: Old Manali & Rishikesh
+              <MapPin className="w-3 h-3 text-emerald-400" /> Head Office: Solan (HP)
             </span>
           </div>
 
           <div className="flex items-center gap-4">
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 font-mono font-bold text-[10px]">
-              🌲 Himachal Govt Registered
-            </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-teal-950 text-teal-400 border border-teal-800 font-mono font-bold text-[10px]">
-              🕉️ Uttarakhand Certified
+              📜 Regd. No.: 241224/48355
             </span>
             <span className="text-slate-700">|</span>
             <Link href="/faq" className="hover:text-white transition-colors">FAQs</Link>
