@@ -5,14 +5,14 @@ import Link from 'next/link';
 import { 
   Search, MapPin, Calendar, Compass, ArrowUpRight, 
   Sparkles, Mountain, Waves, Trees, Snowflake, Star, 
-  CheckCircle2, ArrowRight, ShieldCheck, Navigation, Crosshair 
+  CheckCircle2, ArrowRight, ShieldCheck, Navigation, Crosshair, Sun, Palmtree, Building
 } from 'lucide-react';
 
 interface DestinationItem {
   slug: string;
   name: string;
   subtitle: string;
-  region: 'himachal' | 'uttarakhand' | 'ladakh';
+  region: 'himachal' | 'uttarakhand' | 'ladakh' | 'west' | 'south';
   state: string;
   altitude: string;
   bestTime: string;
@@ -28,6 +28,108 @@ interface DestinationItem {
 
 const ALL_DESTINATIONS: DestinationItem[] = [
   {
+    slug: 'spiti-valley',
+    name: 'Spiti Valley Expedition',
+    subtitle: 'THE MIDDLE LAND TRANS-HIMALAYAN CIRCUIT',
+    region: 'himachal',
+    state: 'Himachal Pradesh',
+    altitude: '3,800 meters',
+    bestTime: 'May - October',
+    idealDuration: '7 to 9 Days',
+    rating: '4.96',
+    reviews: '220+',
+    tag: 'Cold Desert Expedition',
+    highAltitude: true,
+    img: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Key Monastery 4,166m', 'Chandratal Lake 4,300m', 'Hikkim Highest Post Office', 'Chicham Bridge & Pin Valley'],
+    desc: 'Stark high-altitude trans-Himalayan expedition across ancient thousand-year cliffside monasteries, turquoise glacial lakes, and world-record high villages.'
+  },
+  {
+    slug: 'leh-ladakh',
+    name: 'Leh & Ladakh Circuit',
+    subtitle: 'THE HIGH-ALTITUDE MOUNTAIN KINGDOM',
+    region: 'ladakh',
+    state: 'Ladakh',
+    altitude: '3,500 meters',
+    bestTime: 'May - September',
+    idealDuration: '7 to 10 Days',
+    rating: '4.98',
+    reviews: '390+',
+    tag: 'High Pass Circuit',
+    highAltitude: true,
+    img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Pangong Tso Lake', 'Nubra Valley Sand Dunes', 'Khardung La Pass 5,359m', 'Shanti Stupa & Thiksey'],
+    desc: 'Perched high in the Trans-Himalayas, Leh offers turquoise high-altitude lakes, world high motorable passes, double-humped camels, and serene monasteries.'
+  },
+  {
+    slug: 'goa',
+    name: 'Goa Coastal & Heritage Tour',
+    subtitle: 'SUN-DRENCHED BEACHES, LATIN QUARTERS & FORTS',
+    region: 'west',
+    state: 'Goa',
+    altitude: 'Sea Level',
+    bestTime: 'October - May',
+    idealDuration: '4 to 6 Days',
+    rating: '4.92',
+    reviews: '380+',
+    tag: 'Beaches & Heritage',
+    highAltitude: false,
+    img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Baga & Palolem Beaches', 'Fontainhas Latin Quarter Walk', 'Aguada & Chapora Forts', 'Dudhsagar Waterfalls & Spice Plantations'],
+    desc: 'Golden sand beaches, historic Portuguese churches, vibrant beach shacks, water sports adventures, and lush spice plantations along the Arabian Sea.'
+  },
+  {
+    slug: 'kerala',
+    name: 'Kerala Backwaters & Tea Valleys',
+    subtitle: 'GOD’S OWN COUNTRY & TROPICAL HAVENS',
+    region: 'south',
+    state: 'Kerala',
+    altitude: 'Sea Level to 1,600m',
+    bestTime: 'September - March',
+    idealDuration: '5 to 8 Days',
+    rating: '4.97',
+    reviews: '520+',
+    tag: 'Backwaters & Tea Hills',
+    highAltitude: false,
+    img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Alleppey Houseboat Cruise', 'Munnar Tea Estate Slopes', 'Wayanad Wildlife Sanctuary', 'Varkala Cliffside Ocean View'],
+    desc: 'Tranquil palm-fringed backwater houseboats, mist-covered Munnar tea hills, Ayurvedic wellness retreats, and golden cliffside ocean beaches.'
+  },
+  {
+    slug: 'mumbai',
+    name: 'Mumbai City & Coastal Tour',
+    subtitle: 'CITY OF DREAMS, COLONIAL HERITAGE & SEA BREEZE',
+    region: 'west',
+    state: 'Maharashtra',
+    altitude: 'Sea Level',
+    bestTime: 'October - March',
+    idealDuration: '2 to 4 Days',
+    rating: '4.89',
+    reviews: '410+',
+    tag: 'Metropolis & Coast',
+    highAltitude: false,
+    img: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Gateway of India & Taj Mahal Palace', 'Marine Drive Sunset Promenade', 'Elephanta Caves Island Boat Trip', 'Colonial Art & Food Walk'],
+    desc: 'India’s buzzing coastal metropolis blending Victorian heritage architecture, seaside promenades, Bollywood glamour, and iconic street food culture.'
+  },
+  {
+    slug: 'gujarat',
+    name: 'Gujarat Great Rann & Cultural Circuit',
+    subtitle: 'WHITE SALT DESERT, LIONS & ANCIENT TEMPLES',
+    region: 'west',
+    state: 'Gujarat',
+    altitude: '15 meters',
+    bestTime: 'November - March',
+    idealDuration: '5 to 7 Days',
+    rating: '4.94',
+    reviews: '290+',
+    tag: 'Salt Desert & Wildlife',
+    highAltitude: false,
+    img: 'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Rann of Kutch White Salt Desert', 'Gir Asiatic Lion Safari', 'Somnath & Dwarka Coastal Shrines', 'Statue of Unity & Handicrafts'],
+    desc: 'Stunning white salt desert during Rann Utsav, sanctuary of Asiatic Lions in Gir, sacred coastal temples of Dwarka & Somnath, and rich handicraft traditions.'
+  },
+  {
     slug: 'manali',
     name: 'Manali & Solang Valley',
     subtitle: 'THE CROWN JEWEL OF KULLU VALLEY',
@@ -36,30 +138,13 @@ const ALL_DESTINATIONS: DestinationItem[] = [
     altitude: '2,050 meters',
     bestTime: 'March - June / Oct - Feb',
     idealDuration: '3 to 5 Days',
-    rating: '4.9',
+    rating: '4.90',
     reviews: '240+',
     tag: 'Alpine & Snow',
     highAltitude: false,
     img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80',
     highlights: ['Old Manali Cafes', 'Atal Tunnel Sissu', 'Solang Paragliding', 'Jogini Falls'],
     desc: 'Nestled on the Beas riverbanks, Manali offers the ultimate mix of backpacker cafe culture, pine forest trails, and high-pass gateways.'
-  },
-  {
-    slug: 'spiti-valley',
-    name: 'Spiti Valley Circuit',
-    subtitle: 'THE MIDDLE LAND BETWEEN INDIA AND TIBET',
-    region: 'himachal',
-    state: 'Himachal Pradesh',
-    altitude: '3,800 meters',
-    bestTime: 'May - October',
-    idealDuration: '7 to 9 Days',
-    rating: '4.95',
-    reviews: '180+',
-    tag: 'Cold Desert',
-    highAltitude: true,
-    img: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=800&q=80',
-    highlights: ['Key Monastery', 'Chandratal Lake', 'Hikkim Post Office', 'Langza Fossils'],
-    desc: 'A stark high-altitude cold desert featuring thousand-year-old Tibetan monasteries, turquoise alpine lakes, and world-record high villages.'
   },
   {
     slug: 'kasol',
@@ -77,23 +162,6 @@ const ALL_DESTINATIONS: DestinationItem[] = [
     img: 'https://images.unsplash.com/photo-1588714477688-cf28a50e94f7?auto=format&fit=crop&w=800&q=80',
     highlights: ['Tosh Village Hike', 'Kheerganga Hot Springs', 'Chalal Pine Trail', 'Israeli Dining'],
     desc: 'Pine-scented mountain haven famous for bohemian cafes, gushing Parvati river, and gateway access to Tosh & Kheerganga trails.'
-  },
-  {
-    slug: 'kinnaur-kalpa',
-    name: 'Kinnaur & Kalpa Valley',
-    subtitle: 'LAND OF GODS & APPLE ORCHARDS',
-    region: 'himachal',
-    state: 'Himachal Pradesh',
-    altitude: '2,960 meters',
-    bestTime: 'April - October',
-    idealDuration: '4 to 6 Days',
-    rating: '4.91',
-    reviews: '130+',
-    tag: 'High Pass & Orchards',
-    highAltitude: true,
-    img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
-    highlights: ['Kinnaur Kailash Peak', 'Chitkul Last Village', 'Sangla Valley', 'Suicide Point Kalpa'],
-    desc: 'Breathtaking apple orchard valley nestled beneath the sacred Kinnaur Kailash massifs and gateway to the last village Chitkul.'
   },
   {
     slug: 'rishikesh',
@@ -130,6 +198,23 @@ const ALL_DESTINATIONS: DestinationItem[] = [
     desc: 'Unspoiled velvet alpine meadows serving as basecamp for the world’s highest Shiva temple and Chandrashila 360-degree peak views.'
   },
   {
+    slug: 'kinnaur-kalpa',
+    name: 'Kinnaur & Kalpa Valley',
+    subtitle: 'LAND OF GODS & APPLE ORCHARDS',
+    region: 'himachal',
+    state: 'Himachal Pradesh',
+    altitude: '2,960 meters',
+    bestTime: 'April - October',
+    idealDuration: '4 to 6 Days',
+    rating: '4.91',
+    reviews: '130+',
+    tag: 'High Pass & Orchards',
+    highAltitude: true,
+    img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+    highlights: ['Kinnaur Kailash Peak', 'Chitkul Last Village', 'Sangla Valley', 'Suicide Point Kalpa'],
+    desc: 'Breathtaking apple orchard valley nestled beneath the sacred Kinnaur Kailash massifs and gateway to the last village Chitkul.'
+  },
+  {
     slug: 'mussoorie-landour',
     name: 'Mussoorie & Landour',
     subtitle: 'QUEEN OF THE HILLS & COLONIAL CHARM',
@@ -147,23 +232,6 @@ const ALL_DESTINATIONS: DestinationItem[] = [
     desc: 'Historic British-era hill station with cobblestone lanes in Landour, panoramic Doon valley sunset views, and heritage bakeries.'
   },
   {
-    slug: 'leh-ladakh',
-    name: 'Leh & Ladakh Circuit',
-    subtitle: 'THE HIGH-ALTITUDE MOUNTAIN KINGDOM',
-    region: 'ladakh',
-    state: 'Ladakh',
-    altitude: '3,500 meters',
-    bestTime: 'May - September',
-    idealDuration: '7 to 10 Days',
-    rating: '4.98',
-    reviews: '390+',
-    tag: 'High Pass Circuit',
-    highAltitude: true,
-    img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
-    highlights: ['Pangong Tso Lake', 'Nubra Valley Dunes', 'Khardung La Pass', 'Shanti Stupa'],
-    desc: 'Perched high in the Trans-Himalayas, Leh offers turquoise high-altitude lakes, high motorable passes, double-humped camels, and ancient monasteries.'
-  },
-  {
     slug: 'bir-billing',
     name: 'Bir Billing',
     subtitle: 'WORLD’S #2 PARAGLIDING CAPITAL',
@@ -179,23 +247,6 @@ const ALL_DESTINATIONS: DestinationItem[] = [
     img: 'https://images.unsplash.com/photo-1533130061792-64b345e4a833?auto=format&fit=crop&w=800&q=80',
     highlights: ['2,400m Tandem Paragliding', 'Chokling Stupa', 'Tea Garden Cycling', 'Rajgundha Hike'],
     desc: 'Soar through thermals from Asia’s highest takeoff point down over green tea plantations, Tibetan monasteries, and sunset cafes.'
-  },
-  {
-    slug: 'dharamshala',
-    name: 'Dharamshala & McLeodganj',
-    subtitle: 'ABODE OF HIS HOLINESS DALAI LAMA',
-    region: 'himachal',
-    state: 'Himachal Pradesh',
-    altitude: '1,457 meters',
-    bestTime: 'September - June',
-    idealDuration: '3 to 4 Days',
-    rating: '4.88',
-    reviews: '210+',
-    tag: 'Tibetan Culture',
-    highAltitude: false,
-    img: 'https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?auto=format&fit=crop&w=800&q=80',
-    highlights: ['Tsuglagkhang Temple', 'Triund Ridge Trek', 'Bhagsunag Falls', 'Dharamkot Vibe'],
-    desc: 'Tranquil cedar-forested hill station blending Tibetan Buddhist heritage with Dhauladhar mountain ridge treks.'
   },
   {
     slug: 'jibhi-tirthan',
@@ -235,59 +286,59 @@ const ALL_DESTINATIONS: DestinationItem[] = [
 
 // Quick Location Pins
 const MAP_PINS = [
-  { name: 'Manali', query: 'manali', alt: '2,050m' },
-  { name: 'Spiti Valley', query: 'spiti', alt: '3,800m' },
-  { name: 'Kasol', query: 'kasol', alt: '1,580m' },
-  { name: 'Kinnaur', query: 'kinnaur', alt: '2,960m' },
-  { name: 'Rishikesh', query: 'rishikesh', alt: '340m' },
-  { name: 'Chopta', query: 'chopta', alt: '2,680m' },
-  { name: 'Mussoorie', query: 'mussoorie', alt: '2,005m' },
+  { name: 'Spiti Expedition', query: 'spiti', alt: '3,800m' },
   { name: 'Leh Ladakh', query: 'leh', alt: '3,500m' },
+  { name: 'Goa', query: 'goa', alt: 'Sea Level' },
+  { name: 'Kerala', query: 'kerala', alt: 'Backwaters' },
+  { name: 'Mumbai', query: 'mumbai', alt: 'Coastal' },
+  { name: 'Gujarat', query: 'gujarat', alt: 'Rann Salt' },
+  { name: 'Manali', query: 'manali', alt: '2,050m' },
+  { name: 'Rishikesh', query: 'rishikesh', alt: '340m' },
 ];
 
-// Featured Map Pin Cards with real photos (Polaroid-style map cards)
+// Featured Map Pin Cards with real photos
 const FEATURED_MAP_CARDS = [
   {
-    name: 'Manali & Solang',
-    query: 'manali',
-    alt: '2,050m',
-    region: 'Himachal',
-    img: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=300&q=80',
-    slug: 'manali',
-    badge: 'Kullu Pass Gateway'
-  },
-  {
-    name: 'Spiti Desert',
+    name: 'Spiti Expedition',
     query: 'spiti',
     alt: '3,800m',
     region: 'Himachal',
     img: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?auto=format&fit=crop&w=300&q=80',
     slug: 'spiti-valley',
-    badge: 'Key Monastery'
+    badge: 'Key Monastery & Lakes'
   },
   {
-    name: 'Chopta Meadows',
-    query: 'chopta',
-    alt: '2,680m',
-    region: 'Uttarakhand',
-    img: 'https://images.unsplash.com/photo-1586375300773-8384e3e4916f?auto=format&fit=crop&w=300&q=80',
-    slug: 'chopta',
-    badge: 'Tungnath Temple'
+    name: 'Leh Ladakh',
+    query: 'leh',
+    alt: '3,500m',
+    region: 'Ladakh',
+    img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=300&q=80',
+    slug: 'leh-ladakh',
+    badge: 'Pangong Tso & Passes'
   },
   {
-    name: 'Rishikesh Ganga',
-    query: 'rishikesh',
-    alt: '340m',
-    region: 'Uttarakhand',
-    img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=300&q=80',
-    slug: 'rishikesh',
-    badge: 'White-Water Rafting'
+    name: 'Goa Coast',
+    query: 'goa',
+    alt: 'Sea Level',
+    region: 'West India',
+    img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=300&q=80',
+    slug: 'goa',
+    badge: 'Beaches & Forts'
+  },
+  {
+    name: 'Kerala Backwaters',
+    query: 'kerala',
+    alt: 'Tea Hills',
+    region: 'South India',
+    img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=300&q=80',
+    slug: 'kerala',
+    badge: 'Houseboats & Tea Hills'
   }
 ];
 
 export default function DestinationsPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeFilter, setActiveFilter] = useState<'all' | 'himachal' | 'uttarakhand' | 'highAltitude'>('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'himachal' | 'uttarakhand' | 'ladakh' | 'west' | 'south' | 'highAltitude'>('all');
 
   const filteredDestinations = ALL_DESTINATIONS.filter((item) => {
     const query = searchQuery.toLowerCase().trim();
@@ -301,6 +352,9 @@ export default function DestinationsPage() {
 
     if (activeFilter === 'himachal') return item.region === 'himachal';
     if (activeFilter === 'uttarakhand') return item.region === 'uttarakhand';
+    if (activeFilter === 'ladakh') return item.region === 'ladakh';
+    if (activeFilter === 'west') return item.region === 'west';
+    if (activeFilter === 'south') return item.region === 'south';
     if (activeFilter === 'highAltitude') return item.highAltitude;
     return true;
   });
@@ -308,14 +362,14 @@ export default function DestinationsPage() {
   return (
     <div className="pb-24 bg-[#F8FAF9] min-h-screen text-slate-900">
       
-      {/* 🗺️ EXPEDITION TOPOGRAPHIC CARTOGRAPHY HERO SECTION */}
+      {/* 🗺️ EXPEDITION CARTOGRAPHY HERO SECTION */}
       <div className="relative bg-[#F8FAF9] text-slate-900 pt-32 sm:pt-38 lg:pt-40 pb-16 sm:pb-24 overflow-hidden mb-12 border-b border-slate-200/90 shadow-sm">
         
         {/* RICH STYLIZED TOPOGRAPHIC CARTOGRAPHY BACKGROUND CANVAS */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-100/60 via-[#F8FAF9] to-slate-100"></div>
 
-          {/* TOPOGRAPHIC ELEVATION VECTOR MAP CONTOURS & ROADS/RIVERS LAYER */}
+          {/* TOPOGRAPHIC MAP CONTOURS */}
           <svg className="w-full h-full opacity-35" viewBox="0 0 1440 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="cartoGrid" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -330,10 +384,6 @@ export default function DestinationsPage() {
               <path d="M -100 180 C 250 80, 450 320, 850 140 C 1100 50, 1300 240, 1600 120" strokeWidth="1.2" />
               <path d="M -100 220 C 250 120, 450 360, 850 180 C 1100 90, 1300 280, 1600 160" strokeWidth="0.8" opacity="0.7" />
               <path d="M -100 260 C 250 160, 450 400, 850 220 C 1100 130, 1300 320, 1600 200" strokeWidth="0.6" opacity="0.5" />
-              
-              <path d="M -50 420 Q 350 220 750 380 T 1550 310" stroke="#059669" strokeWidth="1.4" />
-              <path d="M -50 460 Q 350 260 750 420 T 1550 350" stroke="#059669" strokeWidth="0.8" opacity="0.6" />
-              <path d="M -50 500 Q 350 300 750 460 T 1550 390" stroke="#059669" strokeWidth="0.5" opacity="0.4" />
             </g>
 
             <path 
@@ -344,55 +394,45 @@ export default function DestinationsPage() {
               strokeDasharray="6 6" 
               opacity="0.7"
             />
-            <path 
-              d="M 320 240 Q 600 180 940 260" 
-              fill="none" 
-              stroke="#059669" 
-              strokeWidth="1.8" 
-              strokeDasharray="4 4" 
-              opacity="0.6"
-            />
           </svg>
         </div>
 
-        {/* GPS COORDINATES & COMPASS NAV DETAIL */}
+        {/* GPS COORDINATES */}
         <div className="absolute top-28 left-6 text-[10px] font-mono text-slate-500 tracking-widest pointer-events-none hidden sm:flex items-center gap-3">
           <span className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-white/90 border border-slate-200 text-emerald-800 font-bold shadow-sm">
-            <Compass className="w-3 h-3 text-emerald-600 animate-spin-slow" /> 32°14′N 77°11′E
+            <Compass className="w-3 h-3 text-emerald-600" /> INDIA EXPLORER MAP
           </span>
-          <span>ELEVATION: 340m — 4,300m</span>
-          <span>•</span>
-          <span>HIMACHAL / UTTARAKHAND / LADAKH</span>
+          <span>GOA • MUMBAI • GUJARAT • KERALA • LEH-LADAKH • SPITI</span>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* LEFT COLUMN — DISCOVERY HEADLINE, SEARCH & QUICK PINS */}
+            {/* LEFT COLUMN — DISCOVERY HEADLINE & SEARCH */}
             <div className="lg:col-span-7 text-left space-y-6">
               
               {/* EXPLORATION BADGE */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200 text-slate-900 text-xs font-medium shadow-md backdrop-blur-md">
                 <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-bold text-[11px] uppercase tracking-wider shadow-sm">
-                  <Compass className="w-3.5 h-3.5" /> EXPEDITION MAP
+                  <Compass className="w-3.5 h-3.5" /> ALL INDIA TOURS
                 </span>
                 <span className="text-emerald-800 font-mono text-[11px] font-semibold flex items-center gap-1.5 px-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                  16+ Basecamps Mapped
+                  Curated Destinations & Circuits
                 </span>
               </div>
 
-              {/* MAIN EXPEDITION DISCOVERY HEADING */}
+              {/* MAIN HEADING */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.12] tracking-tight uppercase font-heading">
-                DISCOVER YOUR NEXT <span className="text-emerald-700">DESTINATION</span>
+                DISCOVER YOUR NEXT <span className="text-emerald-700">TOUR & ESCAPE</span>
               </h1>
 
-              {/* EXPEDITION DESCRIPTION */}
+              {/* DESCRIPTION */}
               <p className="text-slate-600 text-sm sm:text-base max-w-xl leading-relaxed font-medium">
-                Unfold the Himalayan cartography. Explore high-altitude desert circuits, pine-forested river havens, ancient monastic villages, and sacred mountain summits across Himachal Pradesh, Uttarakhand, and Ladakh.
+                From high-altitude cold deserts of Spiti & Leh-Ladakh to golden beaches of Goa, backwaters of Kerala, heritage of Gujarat, and coastal vibing of Mumbai.
               </p>
 
-              {/* PROMINENT EXPEDITION SEARCH BAR WIDGET */}
+              {/* SEARCH BAR */}
               <div className="pt-1 max-w-xl">
                 <div className="relative flex items-center bg-white rounded-2xl p-2 shadow-xl border border-slate-200/90 ring-1 ring-emerald-500/10">
                   <Search className="w-5 h-5 text-emerald-600 ml-3.5 shrink-0 pointer-events-none" />
@@ -400,7 +440,7 @@ export default function DestinationsPage() {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search valley, mountain town, pass, or adventure..."
+                    placeholder="Search Goa, Mumbai, Kerala, Gujarat, Leh, Spiti, Manali..."
                     className="w-full bg-transparent border-0 outline-none px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 font-medium"
                   />
                   {searchQuery ? (
@@ -412,18 +452,18 @@ export default function DestinationsPage() {
                     </button>
                   ) : (
                     <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-mono text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 mr-1 shrink-0">
-                      <Crosshair className="w-3.5 h-3.5 text-emerald-600" /> Map Active
+                      <Crosshair className="w-3.5 h-3.5 text-emerald-600" /> Active Search
                     </span>
                   )}
                 </div>
               </div>
 
-              {/* INTERACTIVE QUICK DESTINATION SELECTOR CHIPS */}
+              {/* QUICK DESTINATION SELECTOR CHIPS */}
               <div className="pt-2">
                 <div className="flex items-center gap-1.5 mb-2.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-600" />
                   <span className="text-[11px] font-mono text-slate-600 uppercase tracking-wider font-bold">
-                    Quick Location Pins:
+                    Featured Destinations:
                   </span>
                 </div>
                 
@@ -442,7 +482,6 @@ export default function DestinationsPage() {
                       >
                         <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-emerald-600'}`}></span>
                         <span>{pin.name}</span>
-                        <span className="text-[10px] opacity-70 font-mono">({pin.alt})</span>
                       </button>
                     );
                   })}
@@ -451,24 +490,8 @@ export default function DestinationsPage() {
 
             </div>
 
-            {/* RIGHT COLUMN — POLAROID-STYLE EXPEDITION DESTINATION CARDS ON THE MAP CANVAS */}
+            {/* RIGHT COLUMN — POLAROID CARDS */}
             <div className="lg:col-span-5 relative mt-6 lg:mt-0 min-h-[380px] flex items-center justify-center">
-              
-              {/* MAP NETWORK CONNECTING TRAIL LINES BACKGROUND (SVG) */}
-              <div className="absolute inset-0 pointer-events-none z-0">
-                <svg className="w-full h-full" viewBox="0 0 450 380">
-                  <path 
-                    d="M 60 80 Q 220 40 380 120 T 200 320" 
-                    fill="none" 
-                    stroke="#10B981" 
-                    strokeWidth="1.5" 
-                    strokeDasharray="4 4" 
-                    opacity="0.4" 
-                  />
-                </svg>
-              </div>
-
-              {/* FLOATING POLAROID MAP PIN PREVIEW CARDS */}
               <div className="grid grid-cols-2 gap-4 relative z-10 w-full max-w-md">
                 {FEATURED_MAP_CARDS.map((card, idx) => {
                   const isSelected = searchQuery.toLowerCase() === card.query.toLowerCase();
@@ -482,7 +505,6 @@ export default function DestinationsPage() {
                           : 'border-slate-200/90 hover:border-emerald-500/60 hover:shadow-2xl'
                       } ${idx % 2 === 0 ? '-rotate-1' : 'rotate-1'}`}
                     >
-                      {/* REAL DESTINATION PHOTO PREVIEW */}
                       <div className="relative h-28 rounded-xl overflow-hidden mb-2.5">
                         <img 
                           src={card.img} 
@@ -490,19 +512,11 @@ export default function DestinationsPage() {
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
-                        
-                        {/* ELEVATION BADGE */}
-                        <div className="absolute top-2 left-2 px-2 py-0.5 bg-white/90 backdrop-blur-md text-emerald-800 text-[10px] font-mono font-bold rounded-md border border-slate-200 shadow-sm flex items-center gap-1">
-                          <MapPin className="w-2.5 h-2.5 text-emerald-600" /> {card.alt}
-                        </div>
-
-                        {/* PIN RIPPLE */}
-                        <div className="absolute bottom-2 right-2 flex items-center justify-center">
-                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] animate-pulse"></span>
+                        <div className="absolute top-2 left-2 px-2 py-0.5 bg-white/90 backdrop-blur-md text-emerald-800 text-[10px] font-mono font-bold rounded-md border border-slate-200 shadow-sm">
+                          {card.region}
                         </div>
                       </div>
 
-                      {/* CARD DETAILS */}
                       <div className="px-1 space-y-0.5 text-left">
                         <span className="text-[9px] font-mono uppercase tracking-wider text-emerald-700 block font-bold">
                           {card.badge}
@@ -515,7 +529,6 @@ export default function DestinationsPage() {
                   );
                 })}
               </div>
-
             </div>
 
           </div>
@@ -531,10 +544,13 @@ export default function DestinationsPage() {
           
           <div className="flex items-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {[
-              { id: 'all', label: 'All Escapes', icon: Compass, count: ALL_DESTINATIONS.length },
-              { id: 'himachal', label: 'Himachal Pradesh', icon: Trees, count: ALL_DESTINATIONS.filter(d => d.region === 'himachal').length },
+              { id: 'all', label: 'All Tours', icon: Compass, count: ALL_DESTINATIONS.length },
+              { id: 'himachal', label: 'Himachal & Spiti', icon: Trees, count: ALL_DESTINATIONS.filter(d => d.region === 'himachal').length },
+              { id: 'ladakh', label: 'Leh & Ladakh', icon: Snowflake, count: ALL_DESTINATIONS.filter(d => d.region === 'ladakh').length },
               { id: 'uttarakhand', label: 'Uttarakhand', icon: Waves, count: ALL_DESTINATIONS.filter(d => d.region === 'uttarakhand').length },
-              { id: 'highAltitude', label: 'High Altitude (>2,500m)', icon: Snowflake, count: ALL_DESTINATIONS.filter(d => d.highAltitude).length }
+              { id: 'west', label: 'Goa, Mumbai & Gujarat', icon: Sun, count: ALL_DESTINATIONS.filter(d => d.region === 'west').length },
+              { id: 'south', label: 'Kerala & South', icon: Palmtree, count: ALL_DESTINATIONS.filter(d => d.region === 'south').length },
+              { id: 'highAltitude', label: 'High Pass Circuits', icon: Mountain, count: ALL_DESTINATIONS.filter(d => d.highAltitude).length }
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeFilter === tab.id;
@@ -543,7 +559,7 @@ export default function DestinationsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveFilter(tab.id as any)}
-                  className={`px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap ${
+                  className={`px-4 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap ${
                     isActive
                       ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/25 scale-[1.02]'
                       : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/90 hover:text-slate-900 shadow-xs'
@@ -560,7 +576,7 @@ export default function DestinationsPage() {
           </div>
 
           <div className="text-xs text-slate-500 font-medium">
-            Showing <strong>{filteredDestinations.length}</strong> of <strong>{ALL_DESTINATIONS.length}</strong> basecamps
+            Showing <strong>{filteredDestinations.length}</strong> of <strong>{ALL_DESTINATIONS.length}</strong> tour circuits
           </div>
 
         </div>
@@ -574,7 +590,7 @@ export default function DestinationsPage() {
                 className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden group hover:border-emerald-500 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 {/* IMAGE CONTAINER */}
-                <div className="relative h-44 sm:h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img 
                     src={item.img} 
                     alt={item.name} 
@@ -584,13 +600,7 @@ export default function DestinationsPage() {
 
                   {/* TOP BADGES */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                    <span className={`px-2.5 py-0.5 text-[10px] font-bold rounded-lg backdrop-blur-md shadow-sm ${
-                      item.region === 'himachal'
-                        ? 'bg-emerald-600/90 text-white border border-emerald-400/40'
-                        : item.region === 'uttarakhand'
-                        ? 'bg-teal-600/90 text-white border border-teal-400/40'
-                        : 'bg-indigo-600/90 text-white border border-indigo-400/40'
-                    }`}>
+                    <span className="px-2.5 py-0.5 text-[10px] font-bold rounded-lg backdrop-blur-md shadow-sm bg-emerald-600/90 text-white border border-emerald-400/40">
                       {item.state}
                     </span>
                     <span className="px-2.5 py-0.5 bg-slate-950/80 backdrop-blur-md border border-slate-700/60 text-emerald-300 text-[10px] font-mono font-bold rounded-lg shadow-sm flex items-center gap-1">
@@ -652,7 +662,7 @@ export default function DestinationsPage() {
                       href={`/destinations/${item.slug}`}
                       className="w-full py-2.5 rounded-xl bg-slate-900 group-hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all duration-300 flex items-center justify-center gap-1.5"
                     >
-                      <span>Explore Destination</span>
+                      <span>View Tour Details</span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-emerald-400 group-hover:text-white transition-colors" />
                     </Link>
                   </div>
@@ -663,14 +673,14 @@ export default function DestinationsPage() {
             ))}
           </div>
         ) : (
-          /* EMPTY STATE SEARCH RESULTS */
+          /* EMPTY STATE */
           <div className="bg-white border border-slate-200/80 rounded-3xl p-12 text-center max-w-lg mx-auto space-y-4 my-8">
             <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto text-2xl font-bold">
               🔍
             </div>
-            <h3 className="text-xl font-extrabold text-slate-900">No Basecamps Found</h3>
+            <h3 className="text-xl font-extrabold text-slate-900">No Tours Found</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              We couldn't find any destinations matching "<strong>{searchQuery}</strong>". Try clearing your search or switching region tabs.
+              We couldn't find any tours matching "<strong>{searchQuery}</strong>". Try clearing your search or switching region tabs.
             </p>
             <button
               onClick={() => { setSearchQuery(''); setActiveFilter('all'); }}
@@ -680,109 +690,6 @@ export default function DestinationsPage() {
             </button>
           </div>
         )}
-
-        {/* 4. REGIONAL COMPARATIVE SHOWCASE */}
-        <div className="mt-20 bg-white border border-slate-200/80 rounded-3xl p-8 sm:p-12 shadow-sm space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs uppercase tracking-wider font-bold text-emerald-700 flex items-center justify-center gap-1.5">
-              <Compass className="w-4 h-4" /> Pahadi Region Guide
-            </span>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Himachal Pradesh vs. Uttarakhand
-            </h2>
-            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-              Not sure which Himalayan state matches your travel style? Here is a quick comparison of basecamp vibes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-            
-            {/* HIMACHAL PRADESH BOX */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                  <Trees className="w-5 h-5 text-emerald-600" /> Himachal Pradesh
-                </h3>
-                <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                  Pine Woods & Pass Circuits
-                </span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Famous for pine-scented river valleys (Kullu, Parvati, Tirthan), high-altitude trans-Himalayan desert circuits (Spiti Valley), bohemian backpacker villages (Old Manali, Tosh, Kasol), and Asia's highest paragliding takeoff (Bir Billing).
-              </p>
-              <div className="space-y-2 text-xs font-medium text-slate-700">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Ideal for: Backpacker hostels, road trips, cafe hopping & high passes</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Popular hubs: Manali, Spiti, Kasol, Bir Billing, Dharamshala</span>
-                </div>
-              </div>
-            </div>
-
-            {/* UTTARAKHAND BOX */}
-            <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-                <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                  <Waves className="w-5 h-5 text-teal-600" /> Uttarakhand (Garhwal & Kumaon)
-                </h3>
-                <span className="text-xs font-mono font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-                  Holy Rivers & Summit Treks
-                </span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Known as Devbhoomi (Land of Gods). Famous for sacred river sangams (Devprayag, Ganga Aarti in Rishikesh), high-altitude alpine meadows (Chopta Bugyals), world’s highest Shiva temple (Tungnath 3,680m), and winter ski slopes (Auli).
-              </p>
-              <div className="space-y-2 text-xs font-medium text-slate-700">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
-                  <span>Ideal for: White-water rafting, spiritual shrines, summit snow treks & skiing</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
-                  <span>Popular hubs: Rishikesh, Chopta, Kedarkantha, Auli, Mussoorie</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* 5. CUSTOM ITINERARY GENERATOR CTA BANNER */}
-        <div className="mt-16 bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
-          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <div className="space-y-3 max-w-xl">
-              <span className="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold uppercase tracking-wider inline-flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5" /> Instant Customization
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Want a Multi-Destination Circuit Trip?
-              </h2>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Combine Manali, Spiti, Chopta, or Rishikesh into a single custom itinerary with private 4x4 cabs, verified stays, and 24/7 Pahadi basecamp support.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-              <Link 
-                href="/itinerary-planner"
-                className="px-7 py-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-emerald-900/40 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-              >
-                <span>Build Custom Itinerary</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              
-              <Link 
-                href="/contact"
-                className="px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider border border-white/20 backdrop-blur-md transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <span>Talk to Pahadi Expert</span>
-              </Link>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>

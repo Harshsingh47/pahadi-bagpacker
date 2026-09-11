@@ -95,39 +95,50 @@ export default function Navbar() {
                 </button>
 
                 {destDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-3 w-[520px] z-50">
+                  <div className="absolute top-full left-0 pt-3 w-[620px] z-50">
                     <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-3xl shadow-2xl p-5 animate-fade-in space-y-4">
                       <div className="flex items-center justify-between pb-2 border-b border-slate-100">
-                        <span className="font-cursive text-emerald-700 text-lg">Featured Himalayan Regions</span>
+                        <span className="font-cursive text-emerald-700 text-lg">All India Tours & Basecamps</span>
                         <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="text-[11px] font-bold text-emerald-700 hover:text-emerald-900 uppercase tracking-wider">
-                          View All 16 →
+                          View All Destinations →
                         </Link>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-200/60">
-                          <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-emerald-200/60">
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="bg-emerald-50/50 p-3 rounded-2xl border border-emerald-200/60">
+                          <div className="flex items-center gap-1.5 mb-2 pb-1 border-b border-emerald-200/60">
                             <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
-                            <h5 className="font-extrabold text-xs text-emerald-900 uppercase tracking-wider">Himachal Pradesh</h5>
+                            <h5 className="font-extrabold text-[11px] text-emerald-900 uppercase tracking-wider">Himachal & Spiti</h5>
                           </div>
-                          <div className="space-y-1 text-xs text-slate-700 font-medium">
-                            <Link href="/destinations/manali" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🏔️ Manali & Solang</Link>
-                            <Link href="/destinations/spiti-valley" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🏜️ Spiti Cold Desert</Link>
-                            <Link href="/destinations/kasol" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🌲 Kasol & Parvati</Link>
-                            <Link href="/destinations/bir-billing" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🪂 Bir Billing Paragliding</Link>
+                          <div className="space-y-0.5 text-xs text-slate-700 font-medium">
+                            <Link href="/destinations/spiti-valley" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🏜️ Spiti Expedition</Link>
+                            <Link href="/destinations/manali" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🏔️ Manali & Solang</Link>
+                            <Link href="/destinations/kasol" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-emerald-600 hover:text-white transition-all">🌲 Kasol & Parvati</Link>
                           </div>
                         </div>
 
-                        <div className="bg-teal-50/50 p-4 rounded-2xl border border-teal-200/60">
-                          <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-teal-200/60">
+                        <div className="bg-teal-50/50 p-3 rounded-2xl border border-teal-200/60">
+                          <div className="flex items-center gap-1.5 mb-2 pb-1 border-b border-teal-200/60">
                             <span className="w-2 h-2 rounded-full bg-teal-600"></span>
-                            <h5 className="font-extrabold text-xs text-teal-900 uppercase tracking-wider">Uttarakhand</h5>
+                            <h5 className="font-extrabold text-[11px] text-teal-900 uppercase tracking-wider">Ladakh & UK</h5>
                           </div>
-                          <div className="space-y-1 text-xs text-slate-700 font-medium">
-                            <Link href="/destinations/rishikesh" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🌊 Rishikesh Ganga Rafting</Link>
-                            <Link href="/destinations/chopta" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🕉️ Chopta & Tungnath</Link>
-                            <Link href="/destinations/kedarkantha" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">❄️ Kedarkantha Summit</Link>
-                            <Link href="/destinations" onClick={() => setDestDropdownOpen(false)} className="block py-1.5 px-2.5 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🌸 Valley of Flowers</Link>
+                          <div className="space-y-0.5 text-xs text-slate-700 font-medium">
+                            <Link href="/destinations/leh-ladakh" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🏔️ Leh & Ladakh</Link>
+                            <Link href="/destinations/rishikesh" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🌊 Rishikesh Ganga</Link>
+                            <Link href="/destinations/chopta" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-teal-600 hover:text-white transition-all">🕉️ Chopta Tungnath</Link>
+                          </div>
+                        </div>
+
+                        <div className="bg-amber-50/50 p-3 rounded-2xl border border-amber-200/60">
+                          <div className="flex items-center gap-1.5 mb-2 pb-1 border-b border-amber-200/60">
+                            <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+                            <h5 className="font-extrabold text-[11px] text-amber-900 uppercase tracking-wider">India Tours</h5>
+                          </div>
+                          <div className="space-y-0.5 text-xs text-slate-700 font-medium">
+                            <Link href="/destinations/goa" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-amber-600 hover:text-white transition-all">🏖️ Goa Beaches</Link>
+                            <Link href="/destinations/kerala" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-amber-600 hover:text-white transition-all">🌴 Kerala Backwaters</Link>
+                            <Link href="/destinations/mumbai" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-amber-600 hover:text-white transition-all">🏙️ Mumbai City</Link>
+                            <Link href="/destinations/gujarat" onClick={() => setDestDropdownOpen(false)} className="block py-1 px-2 rounded-xl hover:bg-amber-600 hover:text-white transition-all">🏜️ Gujarat Rann</Link>
                           </div>
                         </div>
                       </div>
