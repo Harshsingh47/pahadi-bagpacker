@@ -46,7 +46,6 @@ export default function BikeRentalPage() {
   // Query Form State
   const [selectedBikeId, setSelectedBikeId] = useState<string>('himalayan');
   const [numberOfDays, setNumberOfDays] = useState<string>('3');
-  const [pickupDepot, setPickupDepot] = useState<string>('Manali Basecamp Depot');
   const [pickupDate, setPickupDate] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   const [userPhone, setUserPhone] = useState<string>('');
@@ -122,7 +121,6 @@ export default function BikeRentalPage() {
     let message = `Hello Pahadi Bagpackers, I would like to inquire about renting a motorcycle:\n\n`;
     message += `🏍️ *Bike:* ${bikeName}\n`;
     message += `📅 *Duration:* ${numberOfDays} Days\n`;
-    message += `📍 *Pickup Depot:* ${pickupDepot}\n`;
     if (pickupDate) message += `📆 *Start Date:* ${pickupDate}\n`;
     if (userName) message += `👤 *Rider Name:* ${userName}\n`;
     if (userPhone) message += `📞 *Contact Number:* ${userPhone}\n`;
@@ -210,7 +208,7 @@ export default function BikeRentalPage() {
       desc: 'Same-to-same fuel level handover. You receive the motorcycle with fuel and return at the same level.',
     },
     {
-      title: 'Pickup & Drop-off Depots',
+      title: 'Pickup Depots Available',
       desc: 'Old Manali Basecamp, Rishikesh Tapovan Depot, Solan HQ Office, and Shimla Central Hub.',
     },
     {
@@ -357,27 +355,6 @@ export default function BikeRentalPage() {
                       <option value="5">5 Days (High Pass Circuit)</option>
                       <option value="7">7 Days (Full Expedition)</option>
                       <option value="10">10+ Days (Spiti / Leh Expedition)</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Pickup Depot */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Pickup Location
-                  </label>
-                  <div className="relative">
-                    <MapPin className="w-4 h-4 text-emerald-600 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                    <select
-                      value={pickupDepot}
-                      onChange={(e) => setPickupDepot(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all appearance-none cursor-pointer"
-                    >
-                      <option value="Manali Basecamp Depot">Old Manali Basecamp Depot</option>
-                      <option value="Rishikesh Tapovan Depot">Rishikesh Tapovan Depot</option>
-                      <option value="Solan Head Office">Solan Registered Head Office</option>
-                      <option value="Shimla Central Hub">Shimla Central Hub</option>
-                      <option value="Chandigarh Delivery">Chandigarh Transit Depot</option>
                     </select>
                   </div>
                 </div>
@@ -810,26 +787,6 @@ export default function BikeRentalPage() {
                     <option value="5">5 Days</option>
                     <option value="7">7 Days (Full Expedition)</option>
                     <option value="10">10+ Days (Spiti / Leh Expedition)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                  Pickup Location
-                </label>
-                <div className="relative">
-                  <MapPin className="w-4 h-4 text-emerald-600 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                  <select
-                    value={pickupDepot}
-                    onChange={(e) => setPickupDepot(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="Manali Basecamp Depot">Old Manali Basecamp Depot</option>
-                    <option value="Rishikesh Tapovan Depot">Rishikesh Tapovan Depot</option>
-                    <option value="Solan Head Office">Solan Registered Head Office</option>
-                    <option value="Shimla Central Hub">Shimla Central Hub</option>
-                    <option value="Chandigarh Delivery">Chandigarh Transit Depot</option>
                   </select>
                 </div>
               </div>
