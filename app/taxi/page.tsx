@@ -48,7 +48,7 @@ const VEHICLES = [
     luggage: '2-3 Medium Bags',
     idealFor: 'Couples, Small Families & Delhi-Shimla / Dehradun Airport Transfers',
     tag: 'EXECUTIVE SEDAN',
-    img: '/images/taxis/swift-dzire.jpg',
+    img: '/images/taxis/swift-dzire.png',
     features: ['4 Passenger Capacity', 'Dual AC & Heating', 'Clean Plush Interior', 'Fastag Enabled']
   },
   {
@@ -59,7 +59,7 @@ const VEHICLES = [
     luggage: '8 to 15 Large Bags',
     idealFor: 'Large Groups, Backpacker Teams, Corporate Trips & Family Reunions',
     tag: 'GROUP TRAVEL (12/17/21 BEDS)',
-    img: '/images/taxis/tempo-traveller.jpg',
+    img: '/images/taxis/tempo-traveller.png',
     features: ['12, 17 & 21 Seater Available', '1X1 Pushback Recliner Seats', 'Stereo Music System', 'Heavy Duty Roof Carrier']
   },
   {
@@ -70,7 +70,7 @@ const VEHICLES = [
     luggage: '10 Large Bags + Rear Storage',
     idealFor: 'Ultra-Luxury Group Expeditions, Executive VIP Delegations & Long-Distance Mountain Pass Cruising',
     tag: 'ULTRA-LUXURY VAN',
-    img: '/images/taxis/force-urbania.jpg',
+    img: '/images/taxis/force-urbania.png',
     features: ['Independent Coil Suspension', 'Individual AC Vents & USB Ports', 'Panoramic Tinted Windows', 'Plush Leatherette Seats']
   }
 ];
@@ -340,7 +340,7 @@ export default function TaxiPage() {
               </h1>
 
               <p className="text-slate-100 text-xs sm:text-sm max-w-lg leading-relaxed font-medium drop-shadow-md">
-                Doorstep pickup from Delhi NCR, Chandigarh & Dehradun to Manali, Shimla, Kasol, Rishikesh & Spiti Valley. Book Innova Crysta, Swift Dzire, Tempo Traveller (12/17/21 Seater), and Force Urbania!
+                Doorstep pickup from Delhi NCR, Chandigarh & Dehradun to Manali, Shimla, Kasol, Rishikesh & Spiti Valley. Book Toyota Innova Crysta, Swift Dzire, Tempo Traveller (12/17/21 Seater), and Force Urbania!
               </p>
 
               {/* HIGH CONTRAST FLOATING BADGES */}
@@ -649,7 +649,7 @@ export default function TaxiPage() {
             </p>
           </div>
 
-          {/* VEHICLES GRID — 4 VEHICLES ONLY */}
+          {/* VEHICLES GRID — 4 VEHICLES ONLY WITH CLEAN STUDIO CONTAINERS */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VEHICLES.map((v) => {
               return (
@@ -657,14 +657,13 @@ export default function TaxiPage() {
                   key={v.id}
                   className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
                 >
-                  <div className="relative h-48 overflow-hidden group bg-slate-50 flex items-center justify-center">
+                  <div className="relative h-52 bg-white flex items-center justify-center p-3 border-b border-slate-100 overflow-hidden">
                     <img 
                       src={v.img} 
                       alt={v.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-95"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-                    <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-mono text-emerald-300 font-bold border border-white/20">
+                    <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-0.5 rounded-full text-[10px] font-mono text-emerald-300 font-bold border border-white/20">
                       {v.tag}
                     </div>
                   </div>
