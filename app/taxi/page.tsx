@@ -30,59 +30,48 @@ const POPULAR_ROUTES: RouteOption[] = [
 
 const VEHICLES = [
   {
-    id: 'sedan',
-    name: 'Executive Compact Sedan',
-    models: 'Swift Dzire, Toyota Etios, Hyundai Aura',
+    id: 'innova-crysta',
+    name: 'Toyota Innova Crysta',
+    models: 'Innova Crysta 7-Seater (Reclining Captain Seats)',
+    seats: '6 to 7 Members',
+    luggage: '4-5 Large Bags + Roof Carrier',
+    idealFor: 'Luxury Family Travel, Senior Citizens & VIP Outstation Highway Trips',
+    tag: 'MOST POPULAR 🌟',
+    img: '/images/taxis/innova-crysta.jpg',
+    features: ['Reclining Captain Bucket Seats', 'Rear Cabin Climate Control', 'Ultra-Smooth Highway Ride', 'Heavy Roof Luggage Carrier']
+  },
+  {
+    id: 'swift-dzire',
+    name: 'Swift Dzire',
+    models: 'Maruti Suzuki Swift Dzire Executive Sedan',
     seats: '4 Members',
     luggage: '2-3 Medium Bags',
-    idealFor: 'Couples, Solo Backpackers & Delhi-Shimla / Rishikesh Highway Rides',
-    tag: 'ECONOMY COMFORT',
-    img: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
-    features: ['Plains & Easy Hills', 'Air Conditioned', 'Clean Plush Interior', 'Fastag Enabled']
+    idealFor: 'Couples, Small Families & Delhi-Shimla / Dehradun Airport Transfers',
+    tag: 'EXECUTIVE SEDAN',
+    img: '/images/taxis/swift-dzire.jpg',
+    features: ['4 Passenger Capacity', 'Dual AC & Heating', 'Clean Plush Interior', 'Fastag Enabled']
   },
   {
-    id: 'suv',
-    name: 'Standard Mountain SUV',
-    models: 'Toyota Innova, Maruti Ertiga, Mahindra Scorpio',
-    seats: '6 to 7 Members',
-    luggage: '4-5 Large Bags',
-    idealFor: 'Families & Group Road Trips to Manali, Shimla & Kasol',
-    tag: 'MOST POPULAR 🌟',
-    img: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
-    features: ['High Ground Clearance', 'Dual AC & Cabin Heater', 'Roof Luggage Carrier', 'All-Weather Ready']
+    id: 'tempo-traveller',
+    name: 'Tempo Traveller (12, 17, 21 Seater)',
+    models: 'Force Tempo Traveller (12 / 17 / 21 Seater Options)',
+    seats: '12, 17, or 21 Members',
+    luggage: '8 to 15 Large Bags',
+    idealFor: 'Large Groups, Backpacker Teams, Corporate Trips & Family Reunions',
+    tag: 'GROUP TRAVEL (12/17/21 BEDS)',
+    img: '/images/taxis/tempo-traveller.jpg',
+    features: ['12, 17 & 21 Seater Available', '1X1 Pushback Recliner Seats', 'Stereo Music System', 'Heavy Duty Roof Carrier']
   },
   {
-    id: 'crysta',
-    name: 'Innova Crysta VIP Executive',
-    models: 'Toyota Innova Crysta (7-Seater Captain Seats)',
-    seats: '6 Members',
-    luggage: '4 Large Bags',
-    idealFor: 'Luxury Travel, Business VIPs & Senior Citizens',
-    tag: 'PREMIUM VIP',
-    img: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80',
-    features: ['Reclining Captain Bucket Seats', 'Rear Climate Control', 'Ultra-Smooth Suspension', 'Ambient Cabin']
-  },
-  {
-    id: 'luxury',
-    name: 'Luxury 4x4 Off-Road Expedition',
-    models: 'Mahindra Thar 4x4, Scorpio N 4WD, Fortuner 4x4',
-    seats: '4 to 7 Members',
-    luggage: '4 Bags + Carrier',
-    idealFor: 'Spiti Valley Circuit, Leh-Ladakh & Deep Winter Snow Passes',
-    tag: 'HIGH PASS 4WD ⚡',
-    img: 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80',
-    features: ['4-Wheel Drive Low Range', 'Water Crossing Capable', 'Snow Chains Included', 'High Altitude Driver']
-  },
-  {
-    id: 'tempo',
-    name: 'Group Tempo Traveller',
-    models: 'Force 12 / 16 / 17 / 26 Seater',
-    seats: '12 to 26 Members',
-    luggage: '8 to 14 Large Bags',
-    idealFor: 'Backpacker Groups, Corporate Retreats & Large Families',
-    tag: 'GROUP LUXURY',
-    img: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80',
-    features: ['1X1 Pushback Recliners', 'Surround Sound Music System', 'Heavy Overhead Luggage Carrier']
+    id: 'force-urbania',
+    name: 'Force Urbania',
+    models: 'Force Urbania Ultra-Luxury Executive Van',
+    seats: '10 to 17 Members',
+    luggage: '10 Large Bags + Rear Storage',
+    idealFor: 'Ultra-Luxury Group Expeditions, Executive VIP Delegations & Long-Distance Mountain Pass Cruising',
+    tag: 'ULTRA-LUXURY VAN',
+    img: '/images/taxis/force-urbania.jpg',
+    features: ['Independent Coil Suspension', 'Individual AC Vents & USB Ports', 'Panoramic Tinted Windows', 'Plush Leatherette Seats']
   }
 ];
 
@@ -158,8 +147,8 @@ const SERVICES = [
   },
   {
     icon: '🚙',
-    title: 'High Altitude 4x4 Trips',
-    desc: 'Specialized 4WD vehicles and experienced Pahadi drivers for Rohtang Pass, Spiti & Leh.',
+    title: 'High Altitude Expeditions',
+    desc: 'Specialized tourist vehicles and experienced Pahadi drivers for Rohtang Pass, Spiti & Leh.',
     badge: 'Permits Included'
   },
   {
@@ -201,7 +190,7 @@ const TRUST_REASONS = [
 
 export default function TaxiPage() {
   const [routeKey, setRouteKey] = useState('delhi-manali');
-  const [vehicleType, setVehicleType] = useState('suv');
+  const [vehicleType, setVehicleType] = useState('innova-crysta');
   const [travelDate, setTravelDate] = useState(new Date(Date.now() + 86400000).toISOString().split('T')[0]);
   const [passengers, setPassengers] = useState('4 Members');
   const [pickupLocation, setPickupLocation] = useState('Delhi');
@@ -221,7 +210,7 @@ export default function TaxiPage() {
     end: 'Manali',
     distance: 530,
     time: '11 to 12 Hours',
-    vehicleName: 'Standard Mountain SUV',
+    vehicleName: 'Toyota Innova Crysta',
     date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
     members: '4 Members'
   });
@@ -238,7 +227,7 @@ export default function TaxiPage() {
       img: ''
     };
 
-    const isSedan = vehicleType === 'sedan';
+    const isSedan = vehicleType === 'swift-dzire';
     const isRuggedRoute = routeKey === 'manali-spiti' || routeKey === 'manali-leh';
     const vehicleObj = VEHICLES.find(v => v.id === vehicleType);
 
@@ -247,7 +236,7 @@ export default function TaxiPage() {
       end: routeData.end,
       distance: routeData.distance,
       time: routeData.time,
-      vehicleName: vehicleObj?.name || 'Standard Mountain SUV',
+      vehicleName: vehicleObj?.name || 'Toyota Innova Crysta',
       date: travelDate,
       members: passengers,
       isSedanWarning: isSedan && isRuggedRoute
@@ -270,10 +259,10 @@ export default function TaxiPage() {
       end: route.end,
       distance: route.distance,
       time: route.time,
-      vehicleName: vehicleObj?.name || 'Standard Mountain SUV',
+      vehicleName: vehicleObj?.name || 'Toyota Innova Crysta',
       date: travelDate,
       members: passengers,
-      isSedanWarning: vehicleType === 'sedan' && (route.key === 'manali-spiti' || route.key === 'manali-leh')
+      isSedanWarning: vehicleType === 'swift-dzire' && (route.key === 'manali-spiti' || route.key === 'manali-leh')
     });
 
     const element = document.getElementById('request-details-module');
@@ -292,10 +281,10 @@ export default function TaxiPage() {
       end: routeData.end,
       distance: routeData.distance,
       time: routeData.time,
-      vehicleName: vehicleObj?.name || 'Standard Mountain SUV',
+      vehicleName: vehicleObj?.name || 'Toyota Innova Crysta',
       date: travelDate,
       members: passengers,
-      isSedanWarning: vId === 'sedan' && (routeKey === 'manali-spiti' || routeKey === 'manali-leh')
+      isSedanWarning: vId === 'swift-dzire' && (routeKey === 'manali-spiti' || routeKey === 'manali-leh')
     });
   };
 
@@ -351,7 +340,7 @@ export default function TaxiPage() {
               </h1>
 
               <p className="text-slate-100 text-xs sm:text-sm max-w-lg leading-relaxed font-medium drop-shadow-md">
-                Doorstep pickup from Delhi NCR, Chandigarh & Dehradun to Manali, Shimla, Kasol, Rishikesh & Spiti Valley. Get your custom price quote directly on WhatsApp!
+                Doorstep pickup from Delhi NCR, Chandigarh & Dehradun to Manali, Shimla, Kasol, Rishikesh & Spiti Valley. Book Innova Crysta, Swift Dzire, Tempo Traveller (12/17/21 Seater), and Force Urbania!
               </p>
 
               {/* HIGH CONTRAST FLOATING BADGES */}
@@ -467,11 +456,10 @@ export default function TaxiPage() {
                         onChange={(e) => setVehicleType(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 hover:border-slate-300 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-900 font-semibold focus:bg-white focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all cursor-pointer shadow-sm"
                       >
-                        <option value="sedan">Executive Sedan (Dzire - 4 Seats)</option>
-                        <option value="suv">Mountain SUV (Innova - 6-7 Seats)</option>
-                        <option value="crysta">Innova Crysta VIP (Captain Seats)</option>
-                        <option value="luxury">Luxury 4x4 (Thar 4WD)</option>
-                        <option value="tempo">Tempo Traveller (12-26 Seats)</option>
+                        <option value="innova-crysta">Toyota Innova Crysta (6-7 Seats)</option>
+                        <option value="swift-dzire">Swift Dzire (4 Seats)</option>
+                        <option value="tempo-traveller">Tempo Traveller (12, 17, 21 Seater)</option>
+                        <option value="force-urbania">Force Urbania (Luxury Executive Van)</option>
                       </select>
                     </div>
 
@@ -504,7 +492,7 @@ export default function TaxiPage() {
                         <option value="1-3 Members">1 to 3 Members</option>
                         <option value="4-6 Members">4 to 6 Members</option>
                         <option value="7-11 Members">7 to 11 Members</option>
-                        <option value="12-26 Members">12 to 26 Members</option>
+                        <option value="12-21 Members">12 to 21 Members</option>
                       </select>
                     </div>
 
@@ -559,13 +547,13 @@ export default function TaxiPage() {
                   <span>⚠️ Vehicle Terrain Recommendation:</span>
                 </div>
                 <p className="text-xs leading-relaxed">
-                  Sedans are not recommended for high-altitude rugged terrain on <strong>{rideRequest.start} → {rideRequest.end}</strong> due to steep mountain passes. Please select <strong>Mountain SUV</strong> or <strong>Tempo Traveller</strong>.
+                  Sedans are not recommended for high-altitude rugged terrain on <strong>{rideRequest.start} → {rideRequest.end}</strong> due to steep mountain passes. Please select <strong>Toyota Innova Crysta</strong>, <strong>Tempo Traveller</strong>, or <strong>Force Urbania</strong>.
                 </p>
                 <button 
-                  onClick={() => handleSelectVehicleCard('suv')}
+                  onClick={() => handleSelectVehicleCard('innova-crysta')}
                   className="px-4 py-1.5 bg-amber-600 text-white font-bold text-[11px] uppercase rounded-lg hover:bg-amber-700"
                 >
-                  Switch to SUV
+                  Switch to Innova Crysta
                 </button>
               </div>
             ) : (
@@ -661,15 +649,15 @@ export default function TaxiPage() {
             </p>
           </div>
 
-          {/* VEHICLES GRID — CENTERED BALANCED LAYOUT */}
-          <div className="flex flex-wrap justify-center gap-6">
+          {/* VEHICLES GRID — 4 VEHICLES ONLY */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VEHICLES.map((v) => {
               return (
                 <div 
                   key={v.id}
-                  className="w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
+                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-md"
                 >
-                  <div className="relative h-44 overflow-hidden group">
+                  <div className="relative h-48 overflow-hidden group bg-slate-50 flex items-center justify-center">
                     <img 
                       src={v.img} 
                       alt={v.name}
@@ -708,6 +696,16 @@ export default function TaxiPage() {
                         <span>{v.luggage}</span>
                       </div>
                     </div>
+                  </div>
+
+                  <div className="p-4 pt-0 border-t border-slate-100">
+                    <button
+                      onClick={() => handleSelectVehicleCard(v.id)}
+                      className="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all shadow-sm flex items-center justify-center gap-1.5"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                      <span>SELECT & GET QUOTE</span>
+                    </button>
                   </div>
 
                 </div>
@@ -882,7 +880,7 @@ export default function TaxiPage() {
         <div className="space-y-3">
           <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-1.5 shadow-sm">
             <h4 className="font-bold text-slate-900 text-sm">How do I get the price for my taxi booking?</h4>
-            <p className="text-xs text-slate-600 leading-relaxed">Simply select your pickup point, dropoff destination, travel date, number of members, and vehicle type. Click "Send to Admin on WhatsApp", and our basecamp coordinator will immediately calculate and send you the exact guaranteed price.</p>
+            <p className="text-xs text-slate-600 leading-relaxed">Simply select your pickup point, dropoff destination, travel date, number of members, and vehicle type (Innova Crysta, Swift Dzire, Tempo Traveller 12/17/21 Seater, or Urbania). Click "Send to Admin on WhatsApp", and our basecamp coordinator will immediately calculate and send you the exact guaranteed price.</p>
           </div>
 
           <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-1.5 shadow-sm">
@@ -892,7 +890,7 @@ export default function TaxiPage() {
 
           <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-1.5 shadow-sm">
             <h4 className="font-bold text-slate-900 text-sm">Are your drivers trained for high-altitude passes like Rohtang Pass, Spiti or Leh?</h4>
-            <p className="text-xs text-slate-600 leading-relaxed">Absolutly. All our SUV and 4x4 drivers are native Pahadi local drivers with over 10+ years of mountain pass driving experience, trained specifically for snow conditions and steep water crossings.</p>
+            <p className="text-xs text-slate-600 leading-relaxed">Absolutely. All our drivers are native Pahadi local drivers with over 10+ years of mountain pass driving experience, trained specifically for snow conditions and steep water crossings.</p>
           </div>
         </div>
       </section>
