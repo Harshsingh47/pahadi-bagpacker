@@ -62,7 +62,7 @@ export default function BikeRentalPage() {
       engine: '452cc Liquid-Cooled Sherpa',
       power: '40.0 BHP | 40 Nm',
       mileage: '28 km/l',
-      image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=80',
+      image: '/images/bikes/himalayan.jpg',
       tag: 'Off-Road & High Mountain Passes',
       description: 'Engineered for extreme high-altitude terrain, off-road river crossings, and rough Himalayan pass trails.',
       features: ['Liquid-Cooled Sherpa Engine', '200mm Long Travel Suspension', 'Switchable Rear ABS', 'High Ground Clearance'],
@@ -75,7 +75,7 @@ export default function BikeRentalPage() {
       engine: '349cc J-Series Air-Oil Cooled',
       power: '20.2 BHP | 27 Nm',
       mileage: '35 km/l',
-      image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1000&q=80',
+      image: '/images/bikes/meteor.jpg',
       tag: 'Highway Cruiser',
       description: 'Ultimate relaxed highway cruiser with forward footpegs, plush seating, and smooth long-distance touring ergonomics.',
       features: ['Relaxed Forward Footpegs', 'Dual-Channel ABS', 'Tripper Navigation Pod', 'Plush Cruiser Seating'],
@@ -88,7 +88,7 @@ export default function BikeRentalPage() {
       engine: '349cc J-Series Smooth Engine',
       power: '20.2 BHP | 27 Nm',
       mileage: '35 km/l',
-      image: 'https://images.unsplash.com/photo-1558981359-219d6364c9c8?auto=format&fit=crop&w=1000&q=80',
+      image: '/images/bikes/classic.jpg',
       tag: 'Heritage & Comfort',
       description: 'Iconic thump with plush seating, refined engine counterbalancers, and smooth, effortless valley touring.',
       features: ['Smooth Counterbalanced J-Engine', 'Dual-Channel ABS', 'Plush Twin Seating', 'Vintage Aesthetic'],
@@ -101,7 +101,7 @@ export default function BikeRentalPage() {
       engine: '349cc J-Series Roadster',
       power: '20.2 BHP | 27 Nm',
       mileage: '36 km/l',
-      image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1000&q=80',
+      image: '/images/bikes/hunter.jpg',
       tag: 'Agile & Lightweight',
       description: 'Compact 181kg roadster with low seat height (790mm), perfect for nimble mountain twisties and short valley runs.',
       features: ['Lightweight 181kg Chassis', 'Low 790mm Seat Height', 'Sharp Steering Geometry', 'Digital-Analog Display'],
@@ -446,11 +446,11 @@ export default function BikeRentalPage() {
             >
               <div>
                 {/* Bike Image Container */}
-                <div className="relative h-52 overflow-hidden bg-slate-100">
+                <div className="relative h-56 bg-slate-50 flex items-center justify-center p-4 overflow-hidden border-b border-slate-100">
                   <img
                     src={bike.image}
                     alt={bike.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute top-3 left-3 flex items-center gap-2">
                     <span className="px-3 py-1 bg-white/90 backdrop-blur-md text-emerald-900 text-[11px] font-bold rounded-full border border-emerald-200/80 shadow-sm">
@@ -576,13 +576,13 @@ export default function BikeRentalPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-6 rounded-2xl overflow-hidden border border-slate-200/80 shadow-xl relative group">
+            <div className="lg:col-span-6 rounded-2xl overflow-hidden border border-slate-200/80 shadow-xl relative group bg-white flex items-center justify-center p-6">
               <img
-                src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=85"
+                src="/images/bikes/himalayan.jpg"
                 alt="Royal Enfield Himalayan Off-roading"
-                className="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[400px] object-contain group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-slate-900/80 backdrop-blur-md p-4 rounded-xl text-white text-xs flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 bg-slate-900/85 backdrop-blur-md p-4 rounded-xl text-white text-xs flex items-center justify-between">
                 <div>
                   <span className="font-bold block">Spiti & Ladakh Off-Road Ready</span>
                   <span className="text-slate-300 text-[11px]">Includes luggage racks & emergency tool kit</span>
@@ -755,8 +755,8 @@ export default function BikeRentalPage() {
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-800">
-                <MessageCircle className="w-5 h-5 fill-current" />
+              <div className="w-16 h-16 rounded-xl bg-slate-50 border border-slate-100 p-2 flex items-center justify-center shrink-0">
+                <img src={modalBike.image} alt={modalBike.name} className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-slate-900 font-heading">{modalBike.name}</h3>
